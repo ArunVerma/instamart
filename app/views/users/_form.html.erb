@@ -12,10 +12,6 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :zone_id %><br>
-    <%= f.number_field :zone_id %>
-  </div>
-  <div class="field">
     <%= f.label :fname %><br>
     <%= f.text_field :fname %>
   </div>
@@ -32,16 +28,8 @@
     <%= f.text_field :phone %>
   </div>
   <div class="field">
-    <%= f.label :password_digest %><br>
-    <%= f.text_field :password_digest %>
-  </div>
-  <div class="field">
-    <%= f.label :session_token %><br>
-    <%= f.text_field :session_token %>
-  </div>
-  <div class="field">
-    <%= f.label :img_url %><br>
-    <%= f.text_field :img_url %>
+    <%= f.label :password %><br>
+    <%= f.password_field :password %>
   </div>
   <div class="actions">
     <%= f.submit %>

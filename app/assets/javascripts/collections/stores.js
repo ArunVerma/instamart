@@ -1,5 +1,6 @@
 Instamart.Collections.Stores = Backbone.Collection.extend({
 
-  model: Instamart.Models.Store
+  model: Instamart.Models.Store,
+  url: '/stores'
 
 });

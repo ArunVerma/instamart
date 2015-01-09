@@ -12,9 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require jquery.serializejson.min
 //= require underscore
 //= require backbone
+//= require bootstrap
 //= require instamart
 //= require_tree ../templates
 //= require_tree ./models

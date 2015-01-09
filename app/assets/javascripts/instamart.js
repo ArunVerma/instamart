@@ -4,10 +4,12 @@ window.Instamart = {
   Views: {},
   Routers: {},
   initialize: function() {
-    alert('Hello from Backbone!');
+    Instamart.router = new Instamart.Routers.Router({
+      $rootEl: $('#main-content')
+    });
+
+    Instamart.stores = new Instamart.Collections.Stores();
+
+    Backbone.history.start();
   }
 };
-
-$(document).ready(function(){
-  Instamart.initialize();
-});
