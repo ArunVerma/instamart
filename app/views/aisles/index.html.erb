@@ -1,0 +1,29 @@
+<h1>Listing aisles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Dept</th>
+      <th>Store</th>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @aisles.each do |aisle| %>
+      <tr>
+        <td><%= aisle.dept_id %></td>
+        <td><%= aisle.store_id %></td>
+        <td><%= aisle.name %></td>
+        <td><%= link_to 'Show', aisle %></td>
+        <td><%= link_to 'Edit', edit_aisle_path(aisle) %></td>
+        <td><%= link_to 'Destroy', aisle, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Aisle', new_aisle_path %>

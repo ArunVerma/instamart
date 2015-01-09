@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Dept:</strong>
+  <%= @item.dept_id %>
+</p>
+
+<p>
+  <strong>Aisle:</strong>
+  <%= @item.aisle_id %>
+</p>
+
+<p>
+  <strong>Store:</strong>
+  <%= @item.store_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @item.name %>
+</p>
+
+<p>
+  <strong>Brand:</strong>
+  <%= @item.brand %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @item.price %>
+</p>
+
+<p>
+  <strong>Size:</strong>
+  <%= @item.size %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @item.type %>
+</p>
+
+<p>
+  <strong>Sale pct:</strong>
+  <%= @item.sale_pct %>
+</p>
+
+<p>
+  <strong>Img url:</strong>
+  <%= @item.img_url %>
+</p>
+
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Back', items_path %>

@@ -1,0 +1,64 @@
+<script>
+  InstacartStore.departments = new InstacartCommon.Collections.Departments(gon.departments);
+  InstacartStore.warehouses = new InstacartCommon.Collections.Warehouses(gon.warehousesWithZones);
+  InstacartStore.inventoryAreas = new InstacartCommon.Collections.InventoryAreas(gon.inventoryAreas);
+  InstacartStore.zoneWarehouses = [53,3,5];
+  InstacartStore.warehouseLocations = new InstacartCommon.Collections.WarehouseLocations(gon.warehouseLocations);
+</script>
+<script>
+  InstacartStore.zones = new InstacartCommon.Collections.Zones(_.toArray(gon.zones));
+  InstacartStore.setCurrentWarehouse(gon.currentWarehouseId);
+  InstacartStore.setCurrentWarehouseLocationsFromSettings(gon.currentWarehouseLocations);
+  InstacartStore.pretty = false;
+  InstacartStore.items = new InstacartCommon.Collections.Items((gon.cartItems || []).concat(gon.userFavorites || []));
+  InstacartStore.itemCoupons = new InstacartCommon.Collections.ItemCoupons(gon.itemCoupons);
+  InstacartStore.user = new InstacartCommon.Models.User(gon.currentUser, { parse: true });
+  InstacartStore.cart = new InstacartCommon.Models.ShoppingCart(InstacartStore.items);
+  InstacartStore.checkoutCart = new InstacartCommon.Models.LocalCart();
+  InstacartStore.checkoutCart.items.reset(store.get("checkoutCart"));
+  InstacartStore.checkoutCart.resetInventoryWarehouseLocations(store.get("checkoutWarehouseLocations") || {});
+  InstacartStore.settings = new InstacartCommon.Models.Settings();
+  InstacartStore.promotions = new InstacartCommon.Collections.Promotions(gon.promotions);
+  InstacartStore.currentFavorites = new InstacartCommon.Collections.Items(gon.userFavorites);
+  InstacartStore.deliveryPromotions = new InstacartCommon.Collections.DeliveryPromotions();
+  InstacartStore.deliveryPromotions.load();
+
+  InstacartStore.cartFriends = {};
+  InstacartStore.cartCollaborators = gon.cartCollaborators || [];
+
+  if (store.get("brand_new_account")) {
+    if (gon.splitTests && true && !true) {
+      // we need to show them the sorry modal if we don't serve their zip code
+      gon.initialStorePath = 'not_available';
+    } else if (!gon.initialStorePath && !$('#invited-shop-with-friends').length) {
+      // show them the welcome page!
+      gon.initialStorePath = 'welcome';
+    }
+  }
+</script>
+<script>
+  InstacartStore.Helpers.trackEvent('Viewed store', { is_guest: !InstacartStore.Helpers.isLoggedIn(), logged_in: InstacartStore.Helpers.isLoggedIn(), user_id: InstacartStore.user.id, has_code: !!Instacart.Helpers.getQueryParameter("code"), code: Instacart.Helpers.getQueryParameter("code"), url: window.location.href });
+</script>
+<script>
+  InstacartStore.appView = new InstacartStore.Views.AppView({ contentEl: $('#main-content') });
+  if (InstacartStore.extendApp) {
+    InstacartStore.extendApp();
+    InstacartStore.adminRouter = new InstacartStore.Routers.AdminRouter();
+  }
+  InstacartStore.router = new InstacartStore.Routers.AppRouter();
+
+  Backbone.history.start({pushState: true, root: "/store/"});
+
+  if ($('#invited-shop-with-friends').length) {
+    $('#invited-shop-with-friends').modal('show');
+    InstacartStore.Helpers.trackEvent('Showed shop with friends modal');
+  } else if (gon.sharedCartId && gon.sharedCartToken) {
+    InstacartStore.cart.joinCart(gon.sharedCartId, gon.sharedCartToken, function() {
+      InstacartStore.router.updateSharedPath()
+    });
+  }
+</script>
+
+<script>
+  if (window.Instacart && window.Instacart.Helpers && window.Instacart.Helpers.initCollapsibleNav) { Instacart.Helpers.initCollapsibleNav(); }
+</script>

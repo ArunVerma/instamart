@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  dept_id: 1
+  aisle_id: 1
+  store_id: 1
+  name: MyString
+  brand: MyString
+  price: 9.99
+  size: MyString
+  type: 
+  sale_pct: 9.99
+  img_url: MyString
+
+two:
+  dept_id: 1
+  aisle_id: 1
+  store_id: 1
+  name: MyString
+  brand: MyString
+  price: 9.99
+  size: MyString
+  type: 
+  sale_pct: 9.99
+  img_url: MyString
