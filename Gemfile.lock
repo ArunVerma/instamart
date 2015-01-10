@@ -45,7 +45,7 @@ GEM
       jquery-rails
       railties
     bcrypt (3.1.9)
-    better_errors (2.1.0)
+    better_errors (2.1.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
       rack (>= 0.9.0)
@@ -98,7 +98,7 @@ GEM
     pry-rails (0.3.2)
       pry (>= 0.9.10)
     rack (1.5.2)
-    rack-test (0.6.2)
+    rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.1.8)
       actionmailer (= 4.1.8)
@@ -161,6 +161,7 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-sass
   coffee-rails (~> 4.0.0)
+  ejs
   font-awesome-rails
   jbuilder (~> 2.0)
   jquery-rails

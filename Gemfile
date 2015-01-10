@@ -41,6 +41,7 @@ gem 'bcrypt'
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 gem 'jquery-ui-rails'
+gem 'ejs'
 
 group :development do
   gem 'annotate'

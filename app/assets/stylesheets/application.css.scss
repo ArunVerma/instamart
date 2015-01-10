@@ -14,9 +14,10 @@
  *= require_self
  */
 
- @import "bootstrap";
  @import "font-awesome";
+ @import "bootstrap-sprockets";
+ // @import "bootstrap";
 
- body {
+ html * {
    font-family: 'Open Sans';
  }

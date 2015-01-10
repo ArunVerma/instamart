@@ -5,3 +5,16 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+# require 'csv'
+#
+# CSV.foreach(Rails.root.join("db/seed_data/items.csv"), headers: true) do |row|
+#   Product.find_or_create_by(
+#   store: row[0],
+#   dept: row[1],
+#   name: row[2],
+#   price: row[3],
+#   desc: row[4],
+#   img: row[5] + '.jpg'
+#   )
+# end

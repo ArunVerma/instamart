@@ -1,0 +1,27 @@
+<h1>Listing zones</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Zipcodes</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% zones.each(function (zone) { %>
+    <tr>
+      <td><%= zone.escape('name') %></td>
+      <td><%= zone.escape('zipcodes') %></td>
+      <td><a href="#/zones/<%= zone.id %>">Show</a></td>
+      <td><a href="#/zones/<%= zone.id %>/edit">Edit</a></td>
+      <td><a class="delete" data-id="<%= zone.id %>">Delete</a></td>
+    </tr>
+    <% }); %>
+  </tbody>
+</table>
+
+<br>
+
+<a href="#/zones/new">New</a>

@@ -4,14 +4,22 @@
       <link href='https://d1s8987jlndkbs.cloudfront.net/assets/favicon-7ede7037e669789bc8f6a9a597203f87.ico' id='favicon' rel='icon'>
       <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700' rel='stylesheet' type='text/css'>
       <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" media="screen" rel="stylesheet" />
+      <link href="//api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.css" media="screen" rel="stylesheet" />
       <link href="https://d1s8987jlndkbs.cloudfront.net/assets/application-98e12c4adc3c5201af031b4a66e3bb2a.css" media="all" rel="stylesheet" />
-      <link href="https://d1s8987jlndkbs.cloudfront.net/assets/landing_app/new-4b00c51ba05e002b6db0e21ffd97d088.css" media="screen" rel="stylesheet" />
+
       <title>Instamart</title>
       <%= stylesheet_link_tag    'application', media: 'all' %>
       <%= javascript_include_tag 'application' %>
       <%= csrf_meta_tags %>
     </head>
   <body>
+
+  <% if signed_in? %>
+    <%= render partial: "layouts/header/store_primary" %>
+    <%= render partial: "layouts/header/store_secondary" %>
+  <% else %>
+    <%= render partial: "layouts/header/landing" %>
+  <% end %>
 
   <%= yield %>
 
