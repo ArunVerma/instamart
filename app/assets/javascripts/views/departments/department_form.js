@@ -1,5 +1,5 @@
-Instamart.Views.ZoneForm = Backbone.View.extend({
-  template: ['zones/form'],
+Instamart.Views.DepartmentForm = Backbone.View.extend({
+  template: ['departments/form'],
 
   events: {
     'click button': 'submit'

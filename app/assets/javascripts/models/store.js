@@ -1,18 +1,18 @@
 Instamart.Models.Store = Backbone.Model.extend({
   urlRoot: '/stores',
 
-  cards: function () {
-    if (!this._departments) {
-      this._departments = new Instamart.Collections.Departments([], { store: this });
+  depts: function () {
+    if (!this._depts) {
+      this._depts = new Instamart.Collections.Departments([], { store: this });
     }
 
-    return this._departments;
+    return this._depts;
   },
 
   parse: function (response) {
-    if (response.departments) {
-      this.departments().set(response.departments, { parse: true });
-      delete response.departments;
+    if (response.depts) {
+      this.depts().set(response.depts, { parse: true });
+      delete response.depts;
     }
 
     return response;

@@ -1,13 +1,12 @@
-Instamart.Views.ZonesIndex = Backbone.View.extend({
+Instamart.Views.ItemsIndex = Backbone.View.extend({
 
-  template: JST['zones/index'],
+  template: JST['items/index'],
 
   events: {
     'click .delete': 'destroyMe'
   },
 
   initialize: function () {
-    debugger;
     this.listenTo(this.collection, 'add remove reset change', this.render);
   },
 

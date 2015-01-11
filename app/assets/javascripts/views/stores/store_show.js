@@ -7,10 +7,10 @@ Instamart.Views.StoreShow = Backbone.View.extend({
 
   render: function () {
     var content = this.template({
-      store: this.model
+      model: this.model
     });
 
     this.$el.html(content);
     return this;
   }
-})
+});

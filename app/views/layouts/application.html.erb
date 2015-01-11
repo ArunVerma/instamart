@@ -5,23 +5,29 @@
       <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700' rel='stylesheet' type='text/css'>
       <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" media="screen" rel="stylesheet" />
       <link href="//api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.css" media="screen" rel="stylesheet" />
-      <link href="https://d1s8987jlndkbs.cloudfront.net/assets/application-98e12c4adc3c5201af031b4a66e3bb2a.css" media="all" rel="stylesheet" />
 
       <title>Instamart</title>
       <%= stylesheet_link_tag    'application', media: 'all' %>
       <%= javascript_include_tag 'application' %>
       <%= csrf_meta_tags %>
     </head>
-  <body>
+  <body class="index mac chrome" id="store">
 
   <% if signed_in? %>
+    <link href="https://d1s8987jlndkbs.cloudfront.net/assets/application-98e12c4adc3c5201af031b4a66e3bb2a.css" media="all" rel="stylesheet" />
     <%= render partial: "layouts/header/store_primary" %>
     <%= render partial: "layouts/header/store_secondary" %>
-  <% else %>
-    <%= render partial: "layouts/header/landing" %>
   <% end %>
 
   <%= yield %>
+
+    <div class="outside-container">
+      <div class="container-fluid cart-minimized">
+        <div class="row-fluid">
+          <div class="span12 panel-manager" id="main-content"></div>
+        </div>
+      </div>
+    </div>
 
   </body>
 </html>

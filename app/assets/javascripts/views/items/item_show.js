@@ -1,5 +1,5 @@
-Instamart.Views.ZoneShow = Backbone.View.extend({
-  template: ['zones/show'],
+Instamart.Views.ItemShow = Backbone.View.extend({
+  template: ['items/show'],
 
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);

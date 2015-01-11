@@ -1,5 +1,143 @@
-<h1>New user</h1>
+<div class="container">
+  <header>
+    <a class="login-link btn btn-info" href="<%= new_session_url %>">Log In</a>
+    <a class="logo" href="#"><img alt="Instacart logo carrot green" class="landing-page-logo" id="logo" src="https://d1s8987jlndkbs.cloudfront.net/assets/instacart-logo-carrot-green-039ccd5a52ef9b6e70d73f5745b277d5.png"></a>
+  </header>
+  <div class="panel hero">
+    <div class="signup-panel" id="signup-panel">
+      <div class="step" id="zip-step" style="display: none;">
 
-<%= render 'form' %>
+        <div class="the-eye-catcher">
+          <h1>The best way to shop for groceries</h1>
+          <p style="font-size: 20px;">Delivered from the stores you love in one hour</p>
+        </div>
+        <div style="margin-top: 10px; margin-bottom: 10px">
+          <form action="/check_zip_availability" class="zip-check-form" id="step1" method="post">
+            <p class="message"></p>
+            <input autocomplete="off" class="check-zip-code" id="zip-code" maxlength="5" name="zip_code" pattern="[0-9]*" placeholder="Your zip code" style="width: 160px; margin: 0 0 5px 0;" type="text">
+            <button class="btn btn-warning btn-large" id="zip-code-button" style="margin-bottom: 5px;">
+              Get Started
+            </button>
+          </form>
+        </div>
+        <p class="free-delivery" style="margin-top: 40px;">First delivery is free over $10</p>
+      </div>
+      <div class="last-step clearfix hide step" id="signup-step" style="display: block;">
+        <div class="the-eye-catcher" id="presignup">
+          <h1>We’re available in <span class="break-on-mobile">Lower Manhattan</span></h1>
+          <p>Sign up and receive <strong>free delivery</strong> <span class="break-on-mobile">on your first order over $10</span></p>
+        </div>
+        <div class="email-signup">
+          <form accept-charset="UTF-8" action="/users" class="new_user" id="signup-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="RkXmJv8G0saFJ5pMUoshfAMPOXNz/OOcow4+M50Ro1s="></div><input id="signup_user_remember_me" name="user[remember_me]" type="hidden" value="1">
 
-<%= link_to 'Back', users_path %>
+            <% @user.errors.full_messages.each do |message| %>
+              <div class="alert alert-error" style="text-align: left;"><ul><li><%= message %></li></ul></div>
+            <% end %>
+
+            <input id="signup_user_source" name="user[source]" type="hidden" value="web">
+            <input id="user_zip_code" name="user[zip_code]" type="hidden" value="10001">
+            <input class="user_mp_distinct_id" id="signup_user_mp_distinct_id" name="user[mp_distinct_id]" type="hidden">
+            <div class="form-group clearfix">
+              <input class="name first-name" id="signup_user_first_name" name="user[fname]" placeholder="First name" type="text">
+              <input class="name last-name" id="signup_user_last_name" name="user[lname]" placeholder="Last name" type="text">
+            </div>
+            <div class="form-group"><input id="signup_user_email" name="user[email]" placeholder="Email for receipts" type="email"></div>
+            <div class="form-group"><input id="user_password" name="user[password]" placeholder="Choose password" type="password"></div>
+            <div class="form-group">
+              <button class="btn btn-green btn-large" type="submit">Shop Now</button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+      <div class="step login-step clearfix hide" id="login-step" style="display: none;">
+        <div class="facebook-login">
+          <a class="facebook-connect btn btn-facebook btn-large" href="/auth/facebook">
+            <i class="icon-facebook-sign"></i>
+            &nbsp;
+            Login with Facebook
+          </a>
+        </div>
+        <div class="login-divider">
+          or
+        </div>
+        <div class="email-login">
+          <form accept-charset="UTF-8" action="/accounts/login" class="new_user" id="login-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="RkXmJv8G0saFJ5pMUoshfAMPOXNz/OOcow4+M50Ro1s="></div><input id="login_user_remember_me" name="user[remember_me]" type="hidden" value="1">
+            <input id="login_user_source" name="user[source]" type="hidden" value="web">
+            <input class="user_mp_distinct_id" id="login_user_mp_distinct_id" name="user[mp_distinct_id]" type="hidden">
+            <div class="form-group"><input autocomplete="username" id="login_user_email" name="user[email]" placeholder="Email" style="margin-bottom: 4px;" type="email"></div>
+            <div class="form-group"><input autocomplete="current-password" id="user_password" name="user[password]" placeholder="Password" type="password"></div>
+            <div class="form-group">
+              <button class="btn btn-warning btn-large" type="submit">Login</button>
+            </div>
+          </form>
+
+          <div class="centered">
+            <p style="margin-bottom: 10px; font-size: 14px;">
+              <a href="#forgot">Forgot password?</a>
+            </p>
+            <p style="font-size: 14px;">
+              Don’t have an account?
+              <a href="#">Sign up</a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="step forgot-password-step clearfix hide" id="forgot-step">
+        <div class="email-login">
+          <h3>Forgot your password?</h3>
+          <form accept-charset="UTF-8" action="/accounts/password" class="new_user" id="forgot-password-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="RkXmJv8G0saFJ5pMUoshfAMPOXNz/OOcow4+M50Ro1s="></div><div class="form-group"><input id="forgot_password_user_email" name="user[email]" placeholder="Email" required="required" type="email"></div>
+            <div class="form-group">
+              <button class="btn btn-warning btn-large" type="submit">Reset Password</button>
+            </div>
+          </form>
+
+          <p style="font-size: 14px;">
+            <a href="#login">Sign in</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="footer">
+    <ul class="nav nav-pills">
+      <li>
+        <a href="/faq">FAQ</a>
+      </li>
+      <li>
+        <a href="/jobs">Jobs</a>
+      </li>
+      <li>
+        <a href="http://news.instacart.com">Blog</a>
+      </li>
+      <li>
+        <a href="/contact">Contact</a>
+      </li>
+      <li>
+        <a href="/press">Press</a>
+      </li>
+      <li>
+        <a href="/privacy">Privacy</a>
+      </li>
+      <li>
+        <a href="/terms">Terms</a>
+      </li>
+      <li>
+        <a href="/shoppers">Become a Shopper</a>
+      </li>
+      <li>
+        <a class="social" href="https://www.facebook.com/Instacart" target="_blank">
+          <i class="icon-facebook-sign"></i>
+        </a>
+      </li>
+      <li>
+        <a class="social" href="https://twitter.com/Instacart" target="_blank">
+          <i class="icon-twitter-sign"></i>
+        </a>
+      </li>
+    </ul>
+    <div class="not-affiliated">Instacart is an independent business and is not necessarily affiliated with, or endorsed or sponsored by Kroger, The Food Emporium, Super Fresh or other retailers mentioned.</div>
+  </footer>
+</div>
+
+<link href="https://d1s8987jlndkbs.cloudfront.net/assets/landing_app/default-535de50e35c1abdb69498119ce83e8bb.css" media="screen" rel="stylesheet" />

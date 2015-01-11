@@ -49,12 +49,9 @@
       - name
       :aisles
         - dept_id
-        - store_id
         - name
         :items
-          - dept_id
           - aisle_id
-          - store_id
           - name
           - brand
           - price

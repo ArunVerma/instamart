@@ -18,7 +18,7 @@ Instamart.Views.StoresIndex = Backbone.View.extend({
 
   render: function () {
     var content = this.template({
-      stores: this.collection
+      collection: this.collection
     });
 
     this.$el.html(content);

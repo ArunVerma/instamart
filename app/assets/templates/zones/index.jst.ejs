@@ -1,10 +1,12 @@
-<h1>Listing zones</h1>
+<h1>Index <% debugger; %></h1>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Zipcodes</th>
+      <% collection.first() %>
+      <% collection.first().attributes.each(function (attribute) { %>
+        <th><%# attribute.name %></th>
+      <% }); %>
       <th colspan="3"></th>
     </tr>
   </thead>

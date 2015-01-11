@@ -28,7 +28,6 @@ ActiveRecord::Schema.define(version: 20150109171433) do
 
   create_table "aisles", force: true do |t|
     t.integer  "dept_id"
-    t.integer  "store_id"
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -64,9 +63,7 @@ ActiveRecord::Schema.define(version: 20150109171433) do
   end
 
   create_table "items", force: true do |t|
-    t.integer  "dept_id"
     t.integer  "aisle_id"
-    t.integer  "store_id"
     t.string   "name"
     t.string   "brand"
     t.decimal  "price"
