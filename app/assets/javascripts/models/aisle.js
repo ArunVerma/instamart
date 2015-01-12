@@ -1,5 +1,5 @@
 Instamart.Models.Aisle = Backbone.Model.extend({
-  urlRoot: '/aisles',
+  urlRoot: 'aisles',
 
   items: function () {
     if (!this._items) {

@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 20150109171433) do
     t.string   "brand"
     t.decimal  "price"
     t.string   "size"
-    t.string   "type"
+    t.string   "product_type"
     t.decimal  "sale_pct"
     t.string   "img_url"
     t.datetime "created_at"

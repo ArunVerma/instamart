@@ -1,6 +1,7 @@
 Instamart.Routers.Router = Backbone.Router.extend({
   routes: {
-    '': 'zoneIndex',
+    '': 'home',
+    'zones': 'zoneIndex',
     'zones/new': 'zoneNew',
     'zones/:id': 'zoneShow',
     'zones/:id/edit': 'zoneEdit',
@@ -26,9 +27,13 @@ Instamart.Routers.Router = Backbone.Router.extend({
     this.$rootEl = options.$rootEl;
   },
 
+  home: function () {
+    Backbone.history.navigate('zones/1/stores/1', { trigger: true });
+  },
+
   // Zone
   zoneIndex: function () {
-    Instamart.zones.fetch();
+    Instamart.zones.fetch({ async: false });
     var view = new Instamart.Views.ZonesIndex({
       collection: Instamart.zones
     });
@@ -67,7 +72,7 @@ Instamart.Routers.Router = Backbone.Router.extend({
 
   // Store
   storeIndex: function () {
-    Instamart.stores.fetch();
+    Instamart.stores.fetch({ async: false });
     var view = new Instamart.Views.StoresIndex({
       collection: Instamart.stores
     });
@@ -76,7 +81,7 @@ Instamart.Routers.Router = Backbone.Router.extend({
   },
 
   storeNew: function (zone_id) {
-    var store = new Instamart.Models.Store({ zone_id: zone_id});
+    var store = new Instamart.Models.Store({ zone_id: zone_id });
     var view = new Instamart.Views.StoreForm({
       model: store,
       collection: Instamart.stores
@@ -85,8 +90,9 @@ Instamart.Routers.Router = Backbone.Router.extend({
     this._swapView(view);
   },
 
-  storeShow: function (id) {
-    var store = Instamart.stores.getOrFetch(id);
+  storeShow: function (zone_id, id) {
+    var zone = Instamart.zones.getOrFetch(zone_id);
+    var store = zone.stores().getOrFetch(id);
     var view = new Instamart.Views.StoreShow({
       model: store
     });
@@ -115,7 +121,7 @@ Instamart.Routers.Router = Backbone.Router.extend({
   },
 
   departmentNew: function (store_id) {
-    var department = new Instamart.Models.Department({ store_id: store_id});
+    var department = new Instamart.Models.Department({ store_id: store_id });
     var view = new Instamart.Views.DepartmentForm({
       model: department,
       collection: Instamart.departments
@@ -154,7 +160,7 @@ Instamart.Routers.Router = Backbone.Router.extend({
   },
 
   aisleNew: function (dept_id) {
-    var aisle = new Instamart.Models.Aisle({ dept_id: dept_id});
+    var aisle = new Instamart.Models.Aisle({ dept_id: dept_id });
     var view = new Instamart.Views.AisleForm({
       model: aisle,
       collection: Instamart.aisles
@@ -193,7 +199,7 @@ Instamart.Routers.Router = Backbone.Router.extend({
   },
 
   itemNew: function (aisle_id) {
-    var item = new Instamart.Models.Item({ aisle_id: aisle_id});
+    var item = new Instamart.Models.Item({ aisle_id: aisle_id });
     var view = new Instamart.Views.ItemForm({
       model: item,
       collection: Instamart.items

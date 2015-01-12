@@ -1,10 +1,17 @@
 Instamart.Collections.Items = Backbone.Collection.extend({
 
   model: Instamart.Models.Item,
-  url: '/items',
+  url: 'items',
 
   initialize: function (models, options) {
-    this.aisle = options.aisle;
+    if (options.aisle) {
+      this.aisle = options.aisle;
+    }
+
+    if (options.dept) {
+      this.dept = options.dept;
+    }
+
   },
 
   getOrFetch: function (id) {

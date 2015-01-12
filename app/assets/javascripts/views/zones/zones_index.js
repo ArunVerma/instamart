@@ -7,7 +7,6 @@ Instamart.Views.ZonesIndex = Backbone.View.extend({
   },
 
   initialize: function () {
-    debugger;
     this.listenTo(this.collection, 'add remove reset change', this.render);
   },
 

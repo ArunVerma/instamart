@@ -1,5 +1,5 @@
 Instamart.Models.Zone = Backbone.Model.extend({
-  urlRoot: '/zones',
+  urlRoot: 'zones',
 
   stores: function () {
     if (!this._stores) {

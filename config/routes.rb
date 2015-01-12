@@ -1,29 +1,20 @@
 Rails.application.routes.draw do
-  resources :stores
-
-  resources :items
-
-  resources :aisles
-
-  resources :departments
-
-  resources :zones
-
-  resources :cart_items
-
-  resources :carts
-
-  resources :order_items
-
-  resources :orders
-
-  resources :credit_cards
-
-  resources :addresses
 
   resources :users
-
   resource :session
 
   root to: 'root#root'
+
+  resources :stores,        defaults: {format: :json}
+  resources :items,         defaults: {format: :json}
+  resources :aisles,        defaults: {format: :json}
+  resources :departments,   defaults: {format: :json}
+  resources :zones,         defaults: {format: :json}
+  resources :cart_items,    defaults: {format: :json}
+  resources :carts,         defaults: {format: :json}
+  resources :order_items,   defaults: {format: :json}
+  resources :orders,        defaults: {format: :json}
+  resources :credit_cards,  defaults: {format: :json}
+  resources :addresses,     defaults: {format: :json}
+
 end

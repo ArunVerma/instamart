@@ -1,5 +1,6 @@
 Instamart.Views.StoreForm = Backbone.View.extend({
-  template: ['stores/form'],
+
+  template: JST['stores/form'],
 
   events: {
     'click button': 'submit'
@@ -26,4 +27,5 @@ Instamart.Views.StoreForm = Backbone.View.extend({
     this.$el.html(content);
     return this;
   }
+  
 });

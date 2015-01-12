@@ -1,7 +1,7 @@
 Instamart.Collections.Departments = Backbone.Collection.extend({
 
   model: Instamart.Models.Department,
-  url: '/departments',
+  url: 'departments',
 
   initialize: function (models, options) {
     this.store = options.store;

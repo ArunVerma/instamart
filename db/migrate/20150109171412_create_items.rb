@@ -6,7 +6,7 @@ class CreateItems < ActiveRecord::Migration
       t.string :brand
       t.decimal :price
       t.string :size
-      t.string :type
+      t.string :product_type
       t.decimal :sale_pct
       t.string :img_url
 

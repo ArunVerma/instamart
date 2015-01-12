@@ -1,7 +1,7 @@
 Instamart.Collections.Zones = Backbone.Collection.extend({
 
   model: Instamart.Models.Zone,
-  url: '/zones',
+  url: 'zones',
 
   getOrFetch: function (id) {
     var zone = this.get(id);

@@ -1,0 +1,146 @@
+id,dept_id,name
+1,1,Fresh Fruits
+2,1,Fresh Vegetables
+3,1,Fresh Herbs
+4,1,Packages Vegetables & Fruits
+5,1,Tofu & Meat Alternatives
+6,2,Meat Counter
+7,2,Poultry Counter
+8,2,Seafood Counter
+9,2,Packaged Meat
+10,2,Packaged Poultry
+11,2,Packaged Seafood
+12,2,"Hot Dogs, Bacon & Sausage"
+13,3,Lunch Meat
+14,3,Specialty Cheeses
+15,3,Prepared Meals
+16,3,Prepared Soups & Salads
+17,3,Fresh Dips & Tapenades
+18,3,Tofu & Meat Alternatives
+19,4,Bread
+20,4,Tortillas & Flat Bread
+21,4,Buns & Rolls
+22,4,Breakfast Bakery
+23,4,Bakery Desserts
+24,6,Milk
+25,6,Cream
+26,6,Eggs
+27,6,Packaged Cheese
+28,6,Yogurt
+29,6,Butter
+30,6,Other Creams & Cheeses
+31,6,Soy & Lactose-Free
+32,6,Refrigerated Pudding & Desserts
+33,6,Specialty Cheeses
+34,7,"Bulk Grains, Rice & Dried Goods"
+35,7,"Bulk Butters, Honey, Syrups & Spreads"
+36,7,Bulk Dried Fruits & Vegetables
+37,7,Bulk Trail Mix & Snack Mix
+38,7,Bulk Tea & Coffee
+39,7,Bulk Flours & Powders
+40,7,Bulk Nuts & Seeds
+41,7,Other Bulk
+42,7,Bulk Candies & Chocolates
+43,8,Canned Fruit & Applesauce
+44,8,Canned & Jarred Vegetables
+45,8,Canned Meals & Beans
+46,8,Canned Meat & Seafood
+47,8,"Soup, Broth & Bouillon"
+48,9,Dry Pasta
+49,9,Fresh Pasta
+50,9,Pasta Sauce
+51,9,Instant Foods
+52,9,"Grains, Rice & Dried Goods"
+53,10,Condiments
+54,10,"Honeys, Syrups & Nectars"
+55,10,Spices & Seasonings
+56,10,Spreads
+57,10,Salad Dressing & Toppings
+58,10,Oils & Vinegars
+59,10,Pickled Goods & Olives
+60,10,Marinades & Meat Preparation
+61,10,Preserved Dips & Spreads
+62,10,"Doughs, Gelatins & Bake Mixes"
+63,10,Baking Ingredients
+64,10,Baking Supplies & Decor
+65,11,Asian Foods
+66,11,Latino Foods
+67,11,Indian Foods
+68,11,Kosher Foods
+69,11,More International Foods
+70,12,Coffee
+71,12,Refrigerated
+72,12,Tea
+73,12,Juice & Nectars
+74,12,Energy & Sports Drinks
+75,12,Soft Drinks
+76,12,"Water, Seltzer & Sparkling Water"
+77,12,Cocoa & Drink Mixes
+78,13,Cereal
+79,13,Hot Cereal & Pancake Mixes
+80,13,Granola
+81,13,Breakfast Bars & Pastries
+82,14,Candy & Chocolate
+83,14,Chips & Pretzels
+84,14,Cookies & Cakes
+85,14,Crackers
+86,14,Energy & Granola Bars
+87,14,Ice Cream Toppings
+88,14,"Nuts, Seeds & Dried Fruit"
+89,14,Popcorn & Jerky
+90,14,Trail Mix & Snack Mix
+91,14,Mint & Gum
+92,14,Fruit & Vegetable Snacks
+93,15,Frozen Breakfast
+94,15,Frozen Appetizers & Sides
+95,15,Frozen Meals
+96,15,Frozen Meat & Seafood
+97,15,Frozen Pizza
+98,15,Frozen Breads & Doughs
+99,15,Frozen Produce
+100,15,Frozen Vegan & Vegetarian
+101,15,Frozen Juice
+102,15,Frozen Dessert
+103,15,Ice Cream & Ice
+104,16,Facial Care
+105,16,Deodorants
+106,16,Body Lotions & Soap
+107,16,Shave Needs
+108,16,Oral Hygiene
+109,16,Eye & Ear Care
+110,16,Family Planning
+111,16,Feminine Care
+112,16,First Aid
+113,16,Air Fresheners & Candles
+114,16,Beauty
+115,16,Clothing
+116,16,"Cold, Flu & Allergy"
+117,16,Digestion
+118,16,Foot Care
+119,16,Stress & Sleep Aids
+120,16,Vitamins & Supplements
+121,16,Hair Care
+122,16,Adult Care
+123,16,Cleanses & Detoxes
+124,16,"Muscles, Joints & Pain Relief"
+125,16,Protein & Meal Replacements
+126,17,Baby Accessories
+127,17,Baby Bath & Body Care
+128,17,Baby Food & Formula
+129,17,Diapers & Wipes
+130,17,Baby First Aid & Vitamins
+131,18,Cat Food & Care
+132,18,Dog Food & Care
+133,18,Small Animal Care
+134,19,Air Fresheners & Candles
+135,19,Cleaning Products
+136,19,Dish Detergents
+137,19,Food Storage
+138,19,"Plates, Bowls, Cups & Flatware"
+139,19,Kitchen Supplies
+140,19,Laundry
+141,19,Paper Goods
+142,19,Trash Bags & Liners
+143,19,"Books, Magazines & Other Media"
+144,19,Garden
+145,19,More Household

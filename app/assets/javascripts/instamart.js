@@ -8,7 +8,7 @@ window.Instamart = {
       $rootEl: $('#main-content')
     });
 
-    Instamart.zones = new Instamart.Collections.Zones();
+    Instamart.zones = new Instamart.Collections.Zones;
 
     Backbone.history.start();
   }

@@ -60,7 +60,7 @@ CSV.foreach(Rails.root.join("db/seed_data/items.csv"), headers: true) do |row|
     brand: row[3],
     price: row[4],
     size: row[5],
-    type: row[6],
+    product_type: row[6],
     sale_pct: row[7],
     img_url: row[8]
   )

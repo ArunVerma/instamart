@@ -19,8 +19,6 @@
     <%= render partial: "layouts/header/store_secondary" %>
   <% end %>
 
-  <%= yield %>
-
     <div class="outside-container">
       <div class="container-fluid cart-minimized">
         <div class="row-fluid">
@@ -28,6 +26,8 @@
         </div>
       </div>
     </div>
+
+  <%= yield %>
 
   </body>
 </html>
