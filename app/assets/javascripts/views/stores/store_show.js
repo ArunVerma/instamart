@@ -2,34 +2,26 @@ Instamart.Views.StoreShow = Backbone.View.extend({
 
   template: JST['stores/show'],
 
-  events: {
-    'click li': 'itemModal'
-  },
-
-  itemModal: function (event) {
-    event.preventDefault();
-    var $tar = $(event.currentTarget);
-    var item = new Instamart.Models.Item({ id: $tar.attr('data-item-id') });
-    item.fetch({ async: false });
-    var view = new Instamart.Views.ItemShow({
-      model: item
-    });
-
-    this.$el.append(view);
-  },
+  className: 'container-fluid cart-minimized',
 
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);
-    this.model.depts().fetch({ async: false });
+    this.depts = this.model.depts();
+  },
+
+  addDepartment: function (department) {
+    var view = new Instamart.Views.DepartmentShow({ model: department });
+    this.addSubview('.infinite-scrolling.items-board.unstyled', view);
+  },
+
+  renderDepartments: function () {
+    this.depts.each(this.addDepartment.bind(this));
   },
 
   render: function () {
-    var content = this.template({
-      store: this.model
-    });
-
+    var content = this.template({ store: this.model });
     this.$el.html(content);
+    this.renderDepartments();
     return this;
   }
-
 });

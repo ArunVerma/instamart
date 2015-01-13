@@ -1,0 +1,74 @@
+<div class="row fluid">
+  <div class="span12 panel-manager" id="main-content">
+    <div class="aisle content-panel active">
+      <div class="row-fluid two">
+        <div class="facets span2">
+          <h5>Sort by</h5>
+          <div class="facet-group sort-options">
+            <div class="btn-group" data-toggle="buttons-radio">
+              <a class="active btn" href="#">Popularity</a>
+              <a class="btn" href="#whole-foods/departments/82/aisles/513?sort=price">Price</a>
+            </div>
+          </div>
+          <h5>Options</h5>
+          <div class="facet-group">
+            <label class="checkbox" for="organic">
+              <input id="organic" type="checkbox">
+              <span>Organic</span>
+              <small class="muted">136</small>
+            </label>
+          </div>
+          <h5>Brand</h5>
+          <div class="facet-group">
+            <ul class="unstyled">
+              <li>
+                <strong>All</strong>
+              </li>
+              <li>
+                <a href="#whole-foods/departments/82/aisles/513?brand_name=No+Brand">No Brand</a>
+                <small class="muted">36</small>
+              </li>
+              <li>
+                <a href="#whole-foods/departments/82/aisles/513?brand_name=Fruit+Produce">Fruit Produce</a>
+                <small class="muted">11</small>
+              </li>
+              <li>
+                <a href="#whole-foods/departments/82/aisles/513?brand_name=Whole+Foods">Whole Foods</a>
+                <small class="muted">6</small>
+              </li>
+              <li>
+                <a href="#whole-foods/departments/82/aisles/513?brand_name=Produce">Produce</a>
+                <small class="muted">6</small>
+              </li>
+            </ul>
+          </div>
+          <div class="pinned-special-request affix-top"><li class="item special-request-item">
+            <div class="media">
+              <div class="q-spacer">
+                <a class="show-modal text-overlay track-link" href="#" data-target="#request-item-modal" data-event="Clicked special request link" data-event-data="{&quot;source&quot;:&quot;facets gutter button, cant find what youre looking for&quot;,&quot;warehouse_id&quot;:3}">
+                  Can't find what you're looking for?
+                </a>
+              </div>
+            </div>
+            <div class="centered item-info">
+              <div class="item-row">
+                <button class="btn btn-block btn-danger show-modal track-link" data-target="#request-item-modal" data-event="Clicked special request link" data-event-data="{&quot;source&quot;:&quot;facets gutter button&quot;,&quot;warehouse_id&quot;:3}">Add Special Request</button>
+              </div>
+              <div class="item-help-link item-row">
+                <a class="muted show-modal track-link" href="#" data-target="#request-item-modal" data-event="Clicked special request link" data-event-data="{&quot;source&quot;:&quot;facets gutter button, what is Instacart?&quot;,&quot;warehouse_id&quot;:3}">What is a special request?</a>
+              </div>
+            </div>
+          </li>
+          </div>
+        </div>
+        <div class="span10">
+          <ul class="infinite-scrolling items-board unstyled">
+            <li class="item-header">
+              <h4><%= aisle.escape('name') %></h4>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

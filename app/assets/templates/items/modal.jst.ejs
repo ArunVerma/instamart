@@ -1,0 +1,60 @@
+<div class="item-detail-overlay hide" style="display: block;"></div>
+<div class="item-detail hide" style="display: block;">
+  <button aria-hidden="true" class="close" data-dismiss="modal" type="button">×</button>
+  <header class="clearfix detail-header">
+    <div class="image">
+      <span class="image-wrapper">
+        <img class="small-image" src="<%= item.escape('img_url') %>">
+      </span>
+      <div class="item-quantity" style="visibility: hidden">
+        <div class="item-quantity-amount">
+          0
+
+          in cart
+        </div>
+      </div>
+    </div>
+    <div class="item-info">
+      <h3>
+        <%= item.escape('name') %>
+        <br>
+        <small><%= item.escape('size') %></small>
+      </h3>
+      <div class="cart-buttons">
+        <div class="price">
+          $<%= item.escape('price') %>
+        </div>
+        <div class="qty-buttons">
+          <button class="btn btn-large btn-qty btn-success dec" style="visibility: hidden">
+            <i class="icon-minus"></i>
+          </button>
+          <button class="btn btn-large btn-qty btn-success inc">
+            <i class="icon-plus"></i>
+            Add
+          </button>
+        </div>
+        <div class="favorites-button">
+          <div class="btn-add-list-dropdown">
+            <i class="icon-plus"></i>
+            Add to List
+            <ul class="carret dropdown"></ul>
+          </div>
+        </div>
+        <p class="clearfix">
+          <a class="btn-open-flag-view" href="#">
+            <i class="icon-flag"></i>
+            Flag Item
+          </a>
+        </p>
+      </div>
+    </div>
+  </header>
+  <div class="detail-main-body">
+    <ul class="nav nav-tabs"></ul>
+    <section class="detail-body" style="max-height: 474px;">
+      <div class="detail-body-inner">
+        <div class="tab-content" style="padding-right: 20px;"></div>
+      </div>
+    </section>
+  </div>
+</div>

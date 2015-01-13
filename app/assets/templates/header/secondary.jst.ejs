@@ -1,0 +1,59 @@
+<div class="navbar-inner" id="sub-nav-wrapper">
+  <ul class="nav nav-normal" id="sub-nav">
+    <% if (pageType === "bookmarks") { %>
+      <li class="featured subnav-item" data-department-id="popular">
+        <a class="active-nav" href="#zones/1/stores/1">
+          <i class="icon-bookmark"></i>
+          Popular
+        </a>
+      </li>
+      <li class="featured subnav-item" data-department-id="lists">
+        <a href="whole-foods/lists">
+          <i class="icon-list"></i>
+          Lists &amp; Recipes
+        </a>
+      </li>
+      <li class="featured subnav-item" data-department-id="favorites">
+        <a href="whole-foods/departments/favorites">
+          <i class="icon-star"></i>
+          Favorites
+        </a>
+      </li>
+    <% } else { %>
+      <% dept.aisles().each(function (aisle) { %>
+        <li class="subnav-item" data-aisle-id="<%= aisle.id %>">
+          <a href="#stores/1/departments/<%= dept.id %>/aisles/<%= aisle.id %>"><%= aisle.escape('name') %></a>
+        </li>
+      <% }); %>
+    <% }; %>
+  </ul>
+<div class="pull-right minimized" id="cart-in-nav">
+  <div class="nav-content"><i class="icon-chevron-right toggle-cart" title="Expand cart"></i>
+    <i class="icon-shopping-cart"></i>
+    <span class="items-count">4 items</span>
+    <div class="pull-right totals">
+      <span class="delivery-icon-totals">
+        <span class="truck-icon"></span>
+        <span class="light truck-icon"></span>
+        <span class="delivery-total">$7.99</span>
+      </span>
+      <div class="btn-group">
+        <button class="btn btn-checkout-mini btn-item-total btn-small items-total" style="overflow: hidden;"><span class="digit digit-0" style="position: relative;">$</span><span class="digit digit-1" style="position: relative; top: 0px;">2</span><span class="digit digit-2" style="position: relative; top: 0px;">9</span><span class="digit digit-3" style="position: relative;">.</span><span class="digit digit-4" style="position: relative; top: 0px;">4</span><span class="digit digit-5" style="position: relative;">6</span></button>
+        <button class="btn btn-checkout-label btn-checkout-mini btn-small">Checkout</button>
+      </div>
+    </div></div>
+    <div class="popover bottom">
+      <div class="arrow"></div>
+      <div class="popover-content"><div class="warehouse-cart" id="popover-warehouse-3-cart">
+        <div class="cart-items">
+          <table class="table">
+            <tbody></tbody>
+          </table>
+        </div>
+        <div class="warehouse-cart-header"><div class="centered main-warehouse-header">
+          <span class="reason">Add only $5.54 for $3.99 delivery!</span>
+        </div></div>
+      </div></div>
+    </div>
+  </div>
+</div>

@@ -1,91 +1,48 @@
-<div class="content-panel"></div>
-<div class="popular content-panel active"><div class="hero-container" style="background-color: #0A6249">
-  <div class="hero top">
-    <div class="items-board-container">
-      <div class="has-logo row warehouse-headline">
-        <div class="logo-container">
-          <div class="warehouse-logo" style="background-image: url(https://d2lnr5mha7bycj.cloudfront.net/warehouse/light_logo/3/972faf87-b56b-4193-8d08-d67e7f05459d.png)"></div>
-        </div>
-        <div class="name-container">
-          <h1 class="name">Whole Foods Market</h1>
-          <div class="description"></div>
-        </div>
-        <div class="info-container">
-          <ul class="actions-container">
-            <li class="js-change-store">
-              <span class="instacart-icon instacart-icon-store"></span>
-              <span class="text">Change Store</span>
-            </li>
-          </ul>
-          <div class="fulfillment-container">
-            <div class="info-overlay"></div>
-            <div class="next-fulfillment">
-              <span class="text">Next available
-                Delivery
-              </span>
-              <span class="window">
-                Tomorrow, Jan 13, 10am - 11am
-              </span>
+<div class="row-fluid">
+  <div class="span12 panel-manager" id="main-content">
+    <div class="content-panel"></div>
+    <div class="popular content-panel active"><div class="hero-container" style="background-color: #0A6249">
+      <div class="hero top">
+        <div class="items-board-container">
+          <div class="has-logo row warehouse-headline">
+            <div class="logo-container">
+              <div class="warehouse-logo" style="background-image: url(https://d2lnr5mha7bycj.cloudfront.net/warehouse/light_logo/3/972faf87-b56b-4193-8d08-d67e7f05459d.png)"></div>
+            </div>
+            <div class="name-container">
+              <h1 class="name">Whole Foods Market</h1>
+              <div class="description"></div>
+            </div>
+            <div class="info-container">
+              <ul class="actions-container">
+                <li class="js-change-store">
+                  <span class="instacart-icon instacart-icon-store"></span>
+                  <span class="text">Change Store</span>
+                </li>
+              </ul>
+              <div class="fulfillment-container">
+                <div class="info-overlay"></div>
+                <div class="next-fulfillment">
+                  <span class="text">Next available
+                    Delivery
+                  </span>
+                  <span class="window">
+                    Tomorrow, Jan 13, 10am - 11am
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+    </div></div>
+    <div class="favorites content-panel"></div>
+    <div class="department content-panel active">
+      <div class="items-board-container popular">
+        <div class="infinite-scrolling items-board unstyled"></div>
+      </div>
+
     </div>
+
   </div>
-</div></div>
-<div class="favorites content-panel"></div>
-<div class="department content-panel active">
-  <div class="items-board-container popular">
-    <div class="infinite-scrolling items-board unstyled">
-      <% store.depts().each(function (dept) { %>
-        <div class="item-header">
-          <h4><a href="#zones/1/stores/1/departments/<%= dept.id %>" class="department"><%= dept.escape('name') %></a> <a href="#zones/1/stores/1/departments/<%= dept.id %>">View More <i class="icon-angle-right"></i></a></h4>
-        </div>
-
-        <ul class="items-list unstyled">
-          <% dept.items().each(function (item) { %>
-            <li class="aisle_513 department_82 has-details item" data-item-id="<%= item.id %>" data-department-id="<%= dept.id %>" data-aisle-id="<%= item.escape('aisle_id') %>">
-              <div class="media">
-                <img src="<%= item.escape('img_url') %>" alt="<%= item.escape('name') %>" style="">
-                <div class="item-quantity-small">
-                  <i class="icon-shopping-cart"></i>
-                  <span class="item-qty">0</span>
-                </div>
-                <div class="item-quantity">
-                  <span class="item-quantity-amount">
-                    <span class="item-qty">0</span>
-                  </span>
-                  <span class="item-quantity-label">in cart</span>
-                </div>
-                <div class="info-group">
-                  <div class="pull-right qty-buttons">
-                    <button class="btn btn-qty btn-success dec">
-                      <i class="icon-minus"></i>
-                    </button>
-                    <button class="btn btn-qty btn-success inc">
-                      <i class="icon-plus"></i>
-                      add
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div class="item-info">
-                <div class="item-name item-row">
-                  <span class="full-item-name"><%= item.escape('name') %></span>
-                  <span class="item-size muted">
-                    $<%= item.escape('price') %>
-                    <strong>·</strong>
-                    <%= item.escape('size') %>
-                  </span>
-                </div>
-              </div>
-            </li>
-
-          <% }); %>
-        </ul>
-
-      <% }); %>
-    </div>
-  </div>
-
+  <div class="minimized hide-on-checkout hide-on-landing" id="cart-sidebar"></div>
 </div>

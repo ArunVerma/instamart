@@ -1,16 +1,21 @@
-Instamart.Views.AisleShow = Backbone.View.extend({
-  template: ['aisles/show'],
+Instamart.Views.AisleShow = Backbone.CompositeView.extend({
+  template: JST['aisles/show'],
 
-  initialize: function () {
-    this.listenTo(this.model, 'sync', this.render);
+  className: 'container-fluid cart-minimized',
+
+  addItem: function (item) {
+    var view = new Instamart.Views.ItemShow({ model: item });
+    this.addSubview('.items-board.unstyled', view);
+  },
+
+  renderItems: function () {
+    this.model.items().each(this.addItem.bind(this));
   },
 
   render: function () {
-    var content = this.template({
-      model: this.model
-    });
-
+    var content = this.template({ aisle: this.model });
     this.$el.html(content);
+    this.renderItems();
     return this;
   }
 });

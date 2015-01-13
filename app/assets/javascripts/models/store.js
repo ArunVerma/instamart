@@ -10,9 +10,9 @@ Instamart.Models.Store = Backbone.Model.extend({
   },
 
   parse: function (response) {
-    if (response.depts) {
-      this.depts().set(response.depts, { parse: true });
-      delete response.depts;
+    if (response.departments) {
+      this.depts().set(response.departments, { parse: true });
+      delete response.departments;
     }
 
     return response;
