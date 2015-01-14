@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
-  resources :users
-  resource :session
+  resources :users,         defaults: {format: :json}
+  resource :session,        defaults: {format: :json}
 
   root to: 'root#root'
 

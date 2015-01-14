@@ -4,9 +4,15 @@ window.Instamart = {
   Views: {},
   Routers: {},
   initialize: function() {
-    Instamart.router = new Instamart.Routers.Router({
-      $root: $('body')
+    Instamart.StoreApp = new Instamart.Routers.Store({
+      $rootEl: $('body')
     });
+
+    Instamart.LandingApp = new Instamart.Routers.Landing({
+      $rootEl: $('body')
+    });
+
+    Instamart.currentUser = new Instamart.Models.CurrentUser();
 
     Instamart.zones = new Instamart.Collections.Zones;
     Instamart.stores = new Instamart.Collections.Stores([], {});
@@ -14,6 +20,7 @@ window.Instamart = {
     Instamart.aisles = new Instamart.Collections.Aisles([], {});
     Instamart.items = new Instamart.Collections.Items([], {});
 
+    Instamart.currentUser.fetch({ async: false });
     Instamart.zones.fetch({ async: false });
     Instamart.stores.fetch({ async: false });
     Instamart.departments.fetch({ async: false });

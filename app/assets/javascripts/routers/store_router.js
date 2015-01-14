@@ -1,17 +1,12 @@
-Instamart.Routers.Router = Backbone.Router.extend({
+Instamart.Routers.Store = Backbone.Router.extend({
   routes: {
-    '': 'home',
-    'stores/:store_id': 'departmentsList',
-    'stores/:store_id/departments/:dept_id': 'aislesList',
+    'stores/:store_id': 'storeShow',
+    'stores/:store_id/departments/:dept_id': 'departmentShow',
     'stores/:store_id/departments/:dept_id/aisles/:aisle_id': 'aisleShow'
   },
 
   initialize: function (options) {
-    this.$root = options.$root;
-  },
-
-  home: function () {
-    Backbone.history.navigate('stores/1', { trigger: true, replace: true });
+    this.$rootEl = options.$rootEl;
   },
 
   // Headers
@@ -58,19 +53,19 @@ Instamart.Routers.Router = Backbone.Router.extend({
   _swapMainContent: function (view) {
     this._mainContent && this._mainContent.remove();
     this._mainContent = view;
-    this.$root.find('.outside-container').html(view.render().$el);
+    this.$rootEl.find('.outside-container').html(view.render().$el);
   },
 
   _swapPrimaryHeader: function (view) {
     this._primaryHeader && this._primaryHeader.remove();
     this._primaryHeader = view;
-    this.$root.find('.primary-navbar').html(view.render().$el);
+    this.$rootEl.find('.primary-navbar').html(view.render().$el);
   },
 
   _swapSecondaryHeader: function (view) {
     this._secondaryHeader && this._secondaryHeader.remove();
     this._secondaryHeader = view;
-    this.$root.find('.secondary-navbar').html(view.render().$el);
+    this.$rootEl.find('.secondary-navbar').html(view.render().$el);
   }
 
 });

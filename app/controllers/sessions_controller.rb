@@ -1,20 +1,25 @@
 class SessionsController < ApplicationController
-  def new; end
-
   def create
-    @user = User.find_by_credentials(params[:user])
+    user = User.find_by_credentials(params[:user])
 
-    if @user
-      sign_in!(@user)
-      redirect_to root_url
+    if user.nil?
+      head :unprocessable_entity
     else
-      flash.now[:errors] = "Invalid email or password."
-      render :new
+      sign_in!(@user)
+      render :show
+    end
+  end
+
+  def show
+    if current_user
+      render :show
+    else
+      render json: {}
     end
   end
 
   def destroy
     sign_out!
-    redirect_to new_session_url
+    render json: {}
   end
 end
