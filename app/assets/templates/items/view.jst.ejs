@@ -1,5 +1,5 @@
 <div class="media">
-  <img src="<%= item.escape('img_url') %>" alt="<%= item.escape('name') %>" style="">
+  <img src="<%= img_url %>" alt="<%= name %>" style="">
   <div class="item-quantity-small">
     <i class="icon-shopping-cart"></i>
     <span class="item-qty">0</span>
@@ -24,11 +24,11 @@
 </div>
 <div class="item-info">
   <div class="item-name item-row">
-    <span class="full-item-name"><%= item.escape('name') %></span>
+    <span class="full-item-name"><%= name %></span>
     <span class="item-size muted">
-      $<%= item.escape('price') %>
+      $<%= price %>
       <strong>·</strong>
-      <%= item.escape('size') %>
+      <%= size %>
     </span>
   </div>
 </div>

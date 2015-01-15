@@ -37,6 +37,7 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem 'backbone-on-rails'
+gem 'marionette-rails'
 gem 'bcrypt'
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'

@@ -18,14 +18,12 @@ Instamart.Views.SignIn = Backbone.View.extend({
 
   submit: function(event){
     event.preventDefault();
-    var $form = $(event.currentTarget);
-    var formData = $form.serializeJSON().user;
-
+    var formData = $('form').serializeJSON().user;
     Instamart.currentUser.signIn({
       email: formData.email,
       password: formData.password,
       error: function(data){
-        this.$el.find('form.new_user').prepend('<div class="alert alert-error" style="text-align: left;"><ul><li>You fucked up!</li></ul></div>');
+        this.$el.find('form.new_user').prepend('<div class="alert alert-error" style="text-align: left;"><ul><li>Something went wrong!</li></ul></div>');
         console.log(data);
       }.bind(this)
     });

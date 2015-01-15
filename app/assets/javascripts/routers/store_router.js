@@ -1,71 +1,78 @@
 Instamart.Routers.Store = Backbone.Router.extend({
   routes: {
-    'stores/:store_id': 'storeShow',
-    'stores/:store_id/departments/:dept_id': 'departmentShow',
-    'stores/:store_id/departments/:dept_id/aisles/:aisle_id': 'aisleShow'
+    '': 'homeRouter',
+    'stores/:id': 'storeShow',
+    'stores/:store_id/departments/:id': 'departmentShow',
+    'stores/:store_id/departments/:dept_id/aisles/:id': 'aisleShow'
   },
 
   initialize: function (options) {
     this.$rootEl = options.$rootEl;
   },
 
-  // Headers
-  headerPrimary: function (options) {
-    var view = new Instamart.Views.HeaderPrimary({
-      model: options.dept
-    });
-
-    this._swapPrimaryHeader(view);
+  homeRouter: function () {
+    console.log(Instamart.currentUser.isSignedIn());
+    if (!Instamart.currentUser.isSignedIn()) {
+      Backbone.history.navigate("landing", { trigger: true });
+    } else {
+      Backbone.history.navigate("stores/1", { trigger: true });
+    }
   },
 
-  headerSecondary: function (options) {
-    var view = new Instamart.Views.HeaderSecondary({
-      model: options.dept,
-      pageType: options.pageType
-    });
+  showNav: function (dept) {
+    // Primary Nav
+    var primaryNavView = new Instamart.Views.PrimaryNav({ model: dept });
+    Instamart.primaryNav.show(primaryNavView);
 
-    this._swapSecondaryHeader(view);
-  },
+    // Secondary Nav
+    var secondaryNavView = new Instamart.Views.SecondaryNav({ model: dept });
+    Instamart.secondaryNav.show(secondaryNavView);
 
-  _showHeader: function (options) {
-    this.headerPrimary(options);
-    this.headerSecondary(options);
+    // Store dropdown
+    var storeDropdownView = new Instamart.Views.StoreDropdown;
+    Instamart.storeDropdown.show(storeDropdownView);
+
+    // Department dropdown
+    var departmentDropdownView = new Instamart.Views.DepartmentDropdown;
+    Instamart.departmentDropdown.show(departmentDropdownView);
   },
 
   // Main content
-  aisleShow: function (store_id, dept_id, aisle_id) {
-    var aisle = Instamart.aisles.getOrFetch(aisle_id);
-    var view = new Instamart.Views.AisleShow({ model: aisle });
-    this._swapMainContent(view);
-    this._showHeader({ dept: Instamart.departments.getOrFetch(dept_id), pageType: 'list' });
+  storeShow: function (id) {
+    var depts = Instamart.stores.getOrFetch(id).depts();
+    var itemsBoard = new Instamart.Views.ItemsBoard({ collection: depts });
+    Instamart.itemsBoard.show(itemsBoard);
+    $('.department.content-panel').toggleClass('active');
+
+    // Nav
+    var dept = new Instamart.Models.Department({name: 'Popular'});
+    this.showNav(dept);
+
+    // Banner
+    var bannerView = new Instamart.Views.Banner;
+    Instamart.popularPanel.show(bannerView);
+    $('.popular.content-panel').toggleClass('active');
   },
 
-  aislesList: function (store_id, dept_id) {
-    var aisles = Instamart.departments.getOrFetch(dept_id).aisles();
-    var view = new Instamart.Views.AislesList({ collection: aisles });
+  departmentShow: function (id) {
+    var dept = Instamart.departments.getOrFetch(id);
+    var aisles = dept.aisles();
+    var itemsBoard = new Instamart.Views.ItemsBoard({ collection: aisles });
+    Instamart.itemsBoard.show(itemsBoard);
+    $('.department.content-panel').toggleClass('active');
+
+    // Nav
+    this.showNav(dept);
   },
 
-  departmentsList: function (store_id) {
-
-  },
-
-  // Swap view helpers
-  _swapMainContent: function (view) {
-    this._mainContent && this._mainContent.remove();
-    this._mainContent = view;
-    this.$rootEl.find('.outside-container').html(view.render().$el);
-  },
-
-  _swapPrimaryHeader: function (view) {
-    this._primaryHeader && this._primaryHeader.remove();
-    this._primaryHeader = view;
-    this.$rootEl.find('.primary-navbar').html(view.render().$el);
-  },
-
-  _swapSecondaryHeader: function (view) {
-    this._secondaryHeader && this._secondaryHeader.remove();
-    this._secondaryHeader = view;
-    this.$rootEl.find('.secondary-navbar').html(view.render().$el);
+  aisleShow: function (id) {
+    var aisle = Instamart.aisles.getOrFetch(id);
+    var dummy = new Instamart.Collections.Aisles([aisle], {});
+    var itemsBoard = new Instamart.Views.ItemsBoard({ collection: dummy });
+    var facets = new Instamart.Views.AisleFacets;
+    $('.aisle.row-fluid').prepend(facets.render().el);
+    Instamart.aislePanel.show(itemsBoard);
+    $('.aisle.content-panel').toggleClass('active');
   }
 
 });

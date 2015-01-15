@@ -1,28 +1,33 @@
-Instamart.Routers.Landing = Backbone.Router.extend({
+Instamart.Routers.Session = Backbone.Router.extend({
 
   initialize: function(options){
     this.$rootEl = options.$rootEl;
-    this.collection = new Instamart.Collections.Users();
-    this.collection.fetch();
   },
 
   routes: {
-    "": "home",
-    "signup": "new",
-    "login": "signIn"
+    "landing": "landing",
+    "signup": "signUp",
+    "login": "signIn",
+    "logout": "signOut"
   },
 
-  home: function(){
-    var callback = this.home.bind(this);
-    if (!this._requireSignedIn(callback)) { return; }
+  landing: function(){
+    if (Instamart.currentUser.isSignedIn()) {
+      Backbone.history.navigate("");
+      return;
+    }
 
-    Backbone.history.navigate("stores/1", { trigger: true });
+    var view = new Instamart.Views.Landing;
+    this._swapView(view);
   },
 
-  new: function(){
-    if (!this._requireSignedOut()) { return; }
+  signUp: function(){
+    if (Instamart.currentUser.isSignedIn()) {
+      Backbone.history.navigate("");
+      return;
+    }
 
-    var model = new this.collection.model();
+    var model = new Instamart.users.model();
     var formView = new Instamart.Views.SignUp({
       collection: this.collection,
       model: model
@@ -31,8 +36,24 @@ Instamart.Routers.Landing = Backbone.Router.extend({
     this._swapView(formView);
   },
 
+  signOut: function () {
+    if (!Instamart.currentUser.isSignedIn()) {
+      Backbone.history.navigate("");
+      return;
+    }
+
+    Instamart.currentUser.signOut({
+      success: function () {
+        Backbone.history.navigate("", true);
+      }
+    });
+  },
+
   signIn: function(callback){
-    if (!this._requireSignedOut(callback)) { return; }
+    if (Instamart.currentUser.isSignedIn()) {
+      Backbone.history.navigate("");
+      return;
+    }
 
     var signInView = new Instamart.Views.SignIn({
       callback: callback

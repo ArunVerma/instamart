@@ -63,9 +63,11 @@ Instamart.Models.CurrentUser = Instamart.Models.User.extend({
     if(this.isSignedIn()){
       this.trigger("signIn");
       console.log("currentUser is signed in!", this);
+      Backbone.history.navigate('', {trigger: true});
     } else {
       this.trigger("signOut");
       console.log("currentUser is signed out!", this);
+      Backbone.history.navigate('', {trigger: true});
     }
   }
 

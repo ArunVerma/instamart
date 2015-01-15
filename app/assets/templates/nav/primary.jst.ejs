@@ -1,0 +1,86 @@
+<div class="ic-collapsible-nav-visible" style="display: inline-block; height: 0%; float: left;">
+  <div class="logo-bg"></div>
+  <a class="logo" href="">Instacart<img alt="Logo header2@2x" class="large-logo instacart-logo" height="36" src="https://d1s8987jlndkbs.cloudfront.net/assets/logo-header2@2x-8b1a92d0e0a78e53c6de452b01939015.png" width="165"><img alt="Logo carrot icon nav.png@2x" class="small-logo instacart-logo" height="40" src="https://d1s8987jlndkbs.cloudfront.net/assets/logo-carrot-icon-nav.png@2x-61eaf045b905e44a1fd870dc365945ec.png"></a>
+  <ul class="hide-on-checkout nav pull-left">
+    <li class="large-dropdown-trigger" id="select-warehouse-name">
+      <div class="nav-name-description">
+        <span class="region-name">NYC</span>
+        <span class="divider">—</span>
+        <span class="active-zip-code">10009</span>
+      </div>
+      <span class="nav-name" id="warehouse-name">Whole Foods Market</span>
+      <div id="warehouse-location-name">Union Square - Union Square South</div>
+      <i class="icon-caret-down"></i>
+    </li>
+    <li class="large-dropdown-trigger" id="select-department-name">
+      <div class="nav-name-description" id="department-name-description">Department</div>
+      <span class="nav-name" id="department-name"><%= name %></span>
+      <i class="icon-caret-down"></i>
+    </li>
+    <li class="hide-on-checkout navbar-search">
+      <span class="twitter-typeahead" style="position: relative; display: inline-block; direction: ltr;"><input class="search-term tt-hint" type="search" readonly="" autocomplete="off" spellcheck="false" tabindex="-1" style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; opacity: 1; background: url(https://d1s8987jlndkbs.cloudfront.net/assets/icon-search-1feb1221dd7fc06187ad991951e3ca1e.png) 12px 14px / auto no-repeat scroll padding-box border-box rgb(255, 255, 255);"><input class="search-term tt-input" id="store-search" name="term" placeholder="Search Instacart" type="search" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top; background-color: transparent;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, sans-serif; font-size: 20px; font-style: normal; font-variant: normal; font-weight: 200; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="tt-dropdown-menu" style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none; right: auto;"><div class="tt-dataset-0"></div></span></span>
+    </li>
+  </ul>
+  <div class="show-on-checkout pull-left" id="checkout-banner">Checkout</div>
+
+</div>
+<ul class="nav pull-right user-nav ic-collapsible-nav-merge" id="navbar-right-nav">
+
+  <li class="mergable">
+    <a class="intercom-activator btn-header" href="#help">
+      <i class="icon-heart"></i>
+      Help me
+    </a>
+  </li><li class="dropdown my-instacart" data-trigger="hover">
+    <a class="dropdown-toggle profile-dropdown" href="#account">
+      <%= Instamart.currentUser.escape('fname') %><b class="caret"></b></a>
+      <ul class="dropdown-menu">
+        <li>
+          <a href="#account">
+            <i class="icon-user"></i>
+            My Account
+          </a>
+        </li>
+        <li>
+          <a href="#account/order_history">
+            <i class="icon-list"></i>
+            Order History
+          </a>
+        </li>
+        <li class="express">
+          <a data-source="dropdown" href="#express">
+            <i class="icon-star"></i>
+            Instacart Express
+          </a>
+        </li>
+        <li class="shop_with_friends">
+          <a href="#shop_with_friends">
+            <i class="icon-smile"></i>
+            Shop with Friends
+          </a>
+        </li>
+        <li>
+          <a class="track-link enter-coupon-code" data-event="Clicked enter coupon code" href="#">
+            <i class="icon-ticket"></i>
+            Have a promo code?
+          </a>
+        </li>
+        <li class="refer_friends">
+          <a class="referral-link" data-source="menu - invite friends" href="#referrals">
+            <i class="icon-money"></i>
+            Refer friends.
+            Get $25.
+          </a>
+        </li>
+        <li class="divider merge-after"></li>
+        <li class="terms-link"><a class="terms-link" href="/terms">Terms &amp; Conditions</a></li>
+        <li class="divider"></li>
+        <li>
+          <a class="logout" href="#logout">
+            <i class="icon-off"></i>
+            Logout
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>

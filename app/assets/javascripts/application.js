@@ -15,10 +15,10 @@
 //= require jquery.serializejson
 //= require underscore
 //= require backbone
+//= require backbone.marionette
 //= require bootstrap
 //= require instamart
 //= require_tree ../templates
-//= require_tree ./utils
 //= require_tree ./models
 //= require_tree ./collections
 //= require_tree ./views
