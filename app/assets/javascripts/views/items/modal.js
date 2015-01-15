@@ -1,4 +1,4 @@
-Instamart.Views.ItemModal = Backbone.View.extend({
+Instamart.Views.ItemModal = Marionette.ItemView.extend({
   template: JST['items/modal'],
 
   events: {
@@ -6,14 +6,16 @@ Instamart.Views.ItemModal = Backbone.View.extend({
     'click .close' : 'dismiss'
   },
 
-  dismiss: function (event) {
-    event.preventDefault();
-    this.remove();
+  className: 'item-detail hide',
+
+  initialize: function () {
+    $('.item-detail-overlay').click(this.dismiss);
   },
 
-  render: function () {
-    var content = this.template({ item: this.model });
-    this.$el.html(content);
-    return this;
+  dismiss: function (event) {
+    event.preventDefault();
+    $('.item-detail-overlay').css({ 'display': 'none' });
+    if ($('.item-detail.hide').length > 0) $('.item-detail.hide').remove();
+    this.remove();
   }
 });

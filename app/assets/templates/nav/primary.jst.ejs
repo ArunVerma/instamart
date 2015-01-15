@@ -14,7 +14,9 @@
     </li>
     <li class="large-dropdown-trigger" id="select-department-name">
       <div class="nav-name-description" id="department-name-description">Department</div>
-      <span class="nav-name" id="department-name"><%= name %></span>
+      <span class="nav-name" id="department-name">
+        <%= department_name %>
+      </span>
       <i class="icon-caret-down"></i>
     </li>
     <li class="hide-on-checkout navbar-search">
@@ -33,7 +35,7 @@
     </a>
   </li><li class="dropdown my-instacart" data-trigger="hover">
     <a class="dropdown-toggle profile-dropdown" href="#account">
-      <%= Instamart.currentUser.escape('fname') %><b class="caret"></b></a>
+      <%= fname %><b class="caret"></b></a>
       <ul class="dropdown-menu">
         <li>
           <a href="#account">

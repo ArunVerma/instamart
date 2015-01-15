@@ -4,11 +4,15 @@ Instamart.Views.StoreDropdown = Marionette.ItemView.extend({
   className: 'warehouses-container',
 
   events: {
-    'click button.close': 'dismiss',
-    'click a': 'dismiss'
+    'click button.close': 'close',
+    'click .warehouse-option': 'close'
   },
 
-  dismissStoreDropdown: function () {
+  open: function () {
+    $('#warehouse-dropdown').addClass('ic-in');
+  },
+
+  close: function () {
     $('#warehouse-dropdown').removeClass('ic-in');
   }
 })

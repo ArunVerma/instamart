@@ -4,17 +4,21 @@ Instamart.Views.DepartmentDropdown = Marionette.ItemView.extend({
   className: 'departments-container',
 
   events: {
-    'click button.close': 'dismiss',
+    'click button.close': 'close',
     'click .btn-change-warehouse': 'changeStore',
-    'click a.department': 'dismiss'
+    'click a.department': 'close'
   },
 
-  dismiss: function () {
+  open: function () {
+    $('#department-dropdown').addClass('ic-in');
+  },
+
+  close: function () {
     $('#department-dropdown').removeClass('ic-in');
   },
 
   changeStore: function () {
-    $('#warehouse-dropdown').toggleClass('ic-in');
-    $('#department-dropdown').toggleClass('ic-in');
+    $('#warehouse-dropdown').addClass('ic-in');
+    $('#department-dropdown').removeClass('ic-in');
   }
 })

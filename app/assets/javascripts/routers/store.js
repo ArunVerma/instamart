@@ -1,25 +1,21 @@
 Instamart.Routers.Store = Backbone.Router.extend({
   routes: {
-    '': 'homeRouter',
+    '': 'root',
+    'whole-foods': 'root',
     'stores/:id': 'storeShow',
     'stores/:store_id/departments/:id': 'departmentShow',
     'stores/:store_id/departments/:dept_id/aisles/:id': 'aisleShow'
   },
 
-  initialize: function (options) {
-    this.$rootEl = options.$rootEl;
-  },
-
-  homeRouter: function () {
-    console.log(Instamart.currentUser.isSignedIn());
+  root: function () {
     if (!Instamart.currentUser.isSignedIn()) {
       Backbone.history.navigate("landing", { trigger: true });
     } else {
-      Backbone.history.navigate("stores/1", { trigger: true });
+      this.storeShow(1);
     }
   },
 
-  showNav: function (dept) {
+  renderNav: function (dept) {
     // Primary Nav
     var primaryNavView = new Instamart.Views.PrimaryNav({ model: dept });
     Instamart.primaryNav.show(primaryNavView);
@@ -35,44 +31,64 @@ Instamart.Routers.Store = Backbone.Router.extend({
     // Department dropdown
     var departmentDropdownView = new Instamart.Views.DepartmentDropdown;
     Instamart.departmentDropdown.show(departmentDropdownView);
+
+    // Cart sidebar
+    var cartSidebarView = new Instamart.Views.CartSidebar;
+    Instamart.cartSidebar.show(cartSidebarView);
   },
 
   // Main content
   storeShow: function (id) {
+    // Items board
     var depts = Instamart.stores.getOrFetch(id).depts();
     var itemsBoard = new Instamart.Views.ItemsBoard({ collection: depts });
     Instamart.itemsBoard.show(itemsBoard);
-    $('.department.content-panel').toggleClass('active');
+    $('.department.content-panel').addClass('active');
 
     // Nav
     var dept = new Instamart.Models.Department({name: 'Popular'});
-    this.showNav(dept);
+    this.renderNav(dept);
 
     // Banner
     var bannerView = new Instamart.Views.Banner;
     Instamart.popularPanel.show(bannerView);
-    $('.popular.content-panel').toggleClass('active');
+    $('.popular.content-panel').addClass('active');
+    $('.popular.content-panel').addClass('active');
   },
 
-  departmentShow: function (id) {
+  departmentShow: function (store_id, id) {
+    // Items board
     var dept = Instamart.departments.getOrFetch(id);
     var aisles = dept.aisles();
     var itemsBoard = new Instamart.Views.ItemsBoard({ collection: aisles });
     Instamart.itemsBoard.show(itemsBoard);
-    $('.department.content-panel').toggleClass('active');
+    $('.department.content-panel').addClass('active');
 
     // Nav
-    this.showNav(dept);
+    this.renderNav(dept);
+
+    // Disable banner
+    $('.popular.content-panel').removeClass('active');
   },
 
-  aisleShow: function (id) {
+  aisleShow: function (store_id, dept_id, id) {
+    // Items board
     var aisle = Instamart.aisles.getOrFetch(id);
+    var dept = Instamart.departments.getOrFetch(dept_id);
     var dummy = new Instamart.Collections.Aisles([aisle], {});
     var itemsBoard = new Instamart.Views.ItemsBoard({ collection: dummy });
+    // Nav
+    this.renderNav(dept);
+
+    // Facets sidebar
     var facets = new Instamart.Views.AisleFacets;
+    debugger;
     $('.aisle.row-fluid').prepend(facets.render().el);
     Instamart.aislePanel.show(itemsBoard);
-    $('.aisle.content-panel').toggleClass('active');
+    $('.aisle.content-panel').addClass('active');
+
+    // Disable banner
+    $('.popular.content-panel').removeClass('active');
   }
 
 });
