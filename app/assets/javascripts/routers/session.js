@@ -76,9 +76,17 @@ Instamart.Routers.Session = Backbone.Router.extend({
   },
 
   _swapView: function (view) {
-    this._currentView && this._currentView.remove();
-    this._currentView = view;
-    this.$rootEl.html(view.render().$el);
+    var that = this
+    if (this.currentView) {
+      this.currentView.$el.fadeOut(500, function() {
+        that.currentView.remove()
+        that.currentView = view;
+        that.$rootEl.html(view.render().$el.hide().fadeIn(500))
+      })
+    } else {
+      that.currentView = view;
+      that.$rootEl.html(view.render().$el);
+    }
   }
 
 });
