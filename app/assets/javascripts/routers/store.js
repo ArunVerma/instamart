@@ -21,7 +21,7 @@ Instamart.Routers.Store = Backbone.Router.extend({
 
   oops: function () {
     var view = new Instamart.Views.Oops;
-    $('body').html(view.render().el);
+    $('body').html(view.render().el.hide().fadeIn(500));
   },
 
   home: function () {
