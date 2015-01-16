@@ -3,6 +3,24 @@ Instamart.Views.CartItem = Marionette.ItemView.extend({
 
   tagName: 'tr',
 
+  events: {
+    'click a.qty-inc'     : 'addToCart',
+    'click a.qty-dec'     : 'removeFromCart',
+    'click a.remove-item' : 'removeAllFromCart'
+  },
+
+  addToCart: function (e) {
+    Instamart.currentUser.addToCart(this.item.id);
+  },
+
+  removeFromCart: function (e) {
+    Instamart.currentUser.removeFromCart(this.item.id);
+  },
+
+  removeAllFromCart: function (e) {
+    Instamart.currentUser.removeAllFromCart(this.item.id);
+  },
+
   attributes: function () {
     return {
       "data-item-id": this.model.get('item_id')
@@ -10,8 +28,23 @@ Instamart.Views.CartItem = Marionette.ItemView.extend({
   },
 
   initialize: function () {
+    this.listenTo(Instamart.cartItems, 'remove add change', this.updateView);
     this.item  = Instamart.items.findWhere({ id: this.model.get('item_id') });
     this.price = parseFloat(this.item.get('price')).toFixed(2);
+  },
+
+  updateView: function () {
+    this.item  = Instamart.items.findWhere({ id: this.model.get('item_id') });
+    this.price = parseFloat(this.item.get('price')).toFixed(2);
+    this.render();
+  },
+
+  onRender: function () {
+    if (+this.model.get('qty') > 1) {
+      $('tr[data-item-id=' + this.item.id + '] a.qty-dec').removeClass('qty-disabled');
+    } else {
+      $('tr[data-item-id=' + this.item.id + '] a.qty-dec').addClass('qty-disabled');
+    }
   },
 
   templateHelpers: function () {

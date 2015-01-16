@@ -14,7 +14,7 @@ Instamart.Views.ItemView = Marionette.ItemView.extend({
   },
 
   initialize: function () {
-    this.listenTo(Instamart.cartItems, 'sync change add remove refresh', this.updateQty);
+    this.listenTo(Instamart.cartItems, 'remove add change', this.updateQty);
     this.qty_in_cart = Instamart.currentUser.qtyInCart(this.model.id);
     this.display_price = parseFloat(this.model.get('price')).toFixed(2);
   },

@@ -12,8 +12,6 @@ Instamart.Models.User = Backbone.Model.extend({
 
   // Cart helpers
   cartItems: function () {
-    Instamart.cartItems.fetch();
-
     if (Instamart.cartItems.length == 0) {
       return [];
     } else {
@@ -33,16 +31,16 @@ Instamart.Models.User = Backbone.Model.extend({
 
   cartSubtotal: function () {
     var subtotal = 0;
-    var items = this.cartItems();
+    var cart_items = this.cartItems();
 
-    if (!items) {
+    if (!cart_items) {
       return 0;
     } else {
       Instamart.items.fetch();
 
-      _(items).each(function (item) {
-        price = Instamart.items.findWhere({ id: item.id }).get('price');
-        subtotal += +item.get('qty') * +price;
+      _(cart_items).each(function (cart_item) {
+        price = Instamart.items.findWhere({ id: cart_item.get('item_id') }).get('price');
+        subtotal += +cart_item.get('qty') * +price;
       });
 
       return subtotal.toFixed(2);
@@ -107,6 +105,20 @@ Instamart.Models.User = Backbone.Model.extend({
           }
         });
       }
+    } else {
+      alert('item doesnt exist in cart!');
+    }
+  },
+
+  removeAllFromCart: function (item_id) {
+    // Look for item in cart items
+    var cart_item = Instamart.cartItems.findWhere({ cart_id: Instamart.currentUser.id, item_id: item_id });
+
+    // If item exists in cart, remove all
+    if (cart_item) {
+      Instamart.cartItems.remove(cart_item);
+      cart_item.destroy();
+      Instamart.cartItems.fetch();
     } else {
       alert('item doesnt exist in cart!');
     }

@@ -52,13 +52,14 @@ Instamart.on("start", function () {
       replacementsPanel  : ".replacements.content-panel",
       expressPanel       : ".new-subscription.content-panel"
     });
-
   }
 
   // Routers
-  Instamart.storeRouter   = new Instamart.Routers.Store({   $rootEl: $('body') });
   Instamart.sessionRouter = new Instamart.Routers.Session({ $rootEl: $('body') });
+  Instamart.storeRouter   = new Instamart.Routers.Store({   $rootEl: $('body') });
 
   // Serve 404 if router not found
-  if (!Backbone.history.start()) Backbone.history.navigate('404', {trigger : true});
+  if (!Backbone.History.started) {
+    if (!Backbone.history.start()) Backbone.history.navigate('404', {trigger : true});
+  }
 });

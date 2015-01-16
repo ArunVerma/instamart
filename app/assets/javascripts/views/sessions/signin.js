@@ -19,6 +19,7 @@ Instamart.Views.SignIn = Backbone.View.extend({
   submit: function(event){
     event.preventDefault();
     var formData = $('form#login-form').serializeJSON().user;
+
     Instamart.currentUser.signIn({
       email: formData.email,
       password: formData.password,
@@ -32,6 +33,7 @@ Instamart.Views.SignIn = Backbone.View.extend({
     if(this.callback) {
       this.callback();
     } else {
+      Instamart.start();
       Backbone.history.navigate("", { trigger: true });
     }
   }

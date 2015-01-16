@@ -11,11 +11,21 @@ Instamart.Views.SecondaryNav = Marionette.ItemView.extend({
 
   initialize: function () {
     this.cartSubtotal = Instamart.currentUser.cartSubtotal();
-    this.cartQty      = Instamart.currentUser.numCartItems();
+    this.cartQty      = Instamart.currentUser.cartItems().length;
     this.fee          = this.getFee();
     this.reason       = this.getReason();
+    this.count        = this.getCount();
 
-    this.listenTo(Instamart.cartItems, 'change', this.render);
+    this.listenTo(Instamart.cartItems, 'remove add change', this.updateCart);
+  },
+
+  updateCart: function () {
+    this.cartSubtotal = Instamart.currentUser.cartSubtotal();
+    this.cartQty      = Instamart.currentUser.cartItems().length;
+    this.fee          = this.getFee();
+    this.reason       = this.getReason();
+    this.count        = this.getCount();
+    this.render();
   },
 
   toggleCartSidebar: function () {
@@ -34,10 +44,20 @@ Instamart.Views.SecondaryNav = Marionette.ItemView.extend({
   },
 
   getFee: function () {
-    if (this.cartSubtotal >= 35) {
-      return 3.99;
-    } else {
+    if (this.cartSubtotal < 10) {
+      return "10 min";
+    } else if (this.cartSubtotal < 35) {
       return 7.99;
+    } else {
+      return 3.99;
+    }
+  },
+
+  getCount: function () {
+    if (this.cartQty < 2) {
+      return this.cartQty + ' item';
+    } else {
+      return this.cartQty + ' items';
     }
   },
 
@@ -55,7 +75,7 @@ Instamart.Views.SecondaryNav = Marionette.ItemView.extend({
       dept     : this.model,
       fee      : this.fee,
       reason   : this.reason,
-      count    : this.cartQty,
+      count    : this.count,
       subtotal : this.cartSubtotal
     };
   }

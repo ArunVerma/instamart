@@ -1,9 +1,4 @@
 Instamart.Routers.Session = Backbone.Router.extend({
-
-  initialize: function(options){
-    this.$rootEl = options.$rootEl;
-  },
-
   routes: {
     "landing" : "landing",
     "signup"  : "signUp",
@@ -11,49 +6,43 @@ Instamart.Routers.Session = Backbone.Router.extend({
     "logout"  : "signOut"
   },
 
+  initialize: function(options){
+    this.$rootEl = options.$rootEl;
+    this.collection = new Instamart.Collections.Users();
+    this.collection.fetch();
+  },
+
   landing: function(){
-    if (Instamart.currentUser.isSignedIn()) {
-      Backbone.history.navigate("whole-foods");
-      return;
-    }
+    if (!this._requireSignedOut()) { return; }
 
     var view = new Instamart.Views.Landing;
     this._swapView(view);
   },
 
   signUp: function(){
-    if (Instamart.currentUser.isSignedIn()) {
-      Backbone.history.navigate("");
-      return;
-    }
+    if (!this._requireSignedOut()) { return; }
 
-    var model = new Instamart.users.model();
+    var model    = new Instamart.users.model();
     var formView = new Instamart.Views.SignUp({
-      collection: this.collection,
-      model: model
+      collection : this.collection,
+      model      : model
     });
 
     this._swapView(formView);
   },
 
   signOut: function () {
-    if (!Instamart.currentUser.isSignedIn()) {
-      Backbone.history.navigate("");
-      return;
-    }
+    if (!this._requireSignedIn()) { return; }
 
     Instamart.currentUser.signOut({
       success: function () {
-        Backbone.history.navigate("", {trigger:true});
+        Backbone.history.navigate("", {trigger : true});
       }
     });
   },
 
   signIn: function(callback){
-    if (Instamart.currentUser.isSignedIn()) {
-      Backbone.history.navigate("");
-      return;
-    }
+    if (!this._requireSignedOut(callback)) { return; }
 
     var signInView = new Instamart.Views.SignIn({
       callback: callback

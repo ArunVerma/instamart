@@ -25,13 +25,20 @@ Instamart.Routers.Store = Backbone.Router.extend({
   },
 
   home: function () {
-    // If not signed in, go to landing page
+    Instamart.currentUser.fetch({async : false});
+
+    // Require signed in
+    // if (!Instamart.sessionRouter._requireSignedIn()) { return; }
+
+    // If not signed in
     if (!Instamart.currentUser.isSignedIn()) {
       Backbone.history.navigate('landing', {trigger : true});
-    // Else, go to home index
+
+    // If signed in
     } else {
       Backbone.history.navigate('whole-foods', {trigger : true});
     }
+
   },
 
   account: function () {
@@ -220,14 +227,11 @@ Instamart.Routers.Store = Backbone.Router.extend({
   // Main content
   storeShow: function () {
     // Require signed in
-    if (!Instamart.currentUser.isSignedIn()) {
-      Backbone.history.navigate("landing", {trigger : true});
-      return;
-    }
+    if (!Instamart.sessionRouter._requireSignedIn()) { return; }
 
     // If coming from checkout
     $('body').removeClass('checking-out');
-    
+
     // Items board
     var depts = Instamart.stores.getOrFetch(1).depts();
     var itemsBoard = new Instamart.Views.ItemsBoard({collection : depts});
@@ -258,10 +262,7 @@ Instamart.Routers.Store = Backbone.Router.extend({
 
   departmentShow: function (id) {
     // Require signed in
-    if (!Instamart.currentUser.isSignedIn()) {
-      Backbone.history.navigate("landing", {trigger : true});
-      return;
-    }
+    if (!Instamart.sessionRouter._requireSignedIn()) { return; }
 
     // Make items board
     var dept = Instamart.departments.getOrFetch(id);
@@ -287,10 +288,7 @@ Instamart.Routers.Store = Backbone.Router.extend({
 
   aisleShow: function (store_id, dept_id, id) {
     // Require signed in
-    if (!Instamart.currentUser.isSignedIn()) {
-      Backbone.history.navigate("landing", {trigger : true});
-      return;
-    }
+    if (!Instamart.sessionRouter._requireSignedIn()) { return; }
 
     // Items board
     var aisle = Instamart.aisles.getOrFetch(id);
