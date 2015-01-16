@@ -38,7 +38,6 @@ Instamart.Routers.Store = Backbone.Router.extend({
     } else {
       Backbone.history.navigate('whole-foods', {trigger : true});
     }
-
   },
 
   account: function () {
@@ -47,7 +46,9 @@ Instamart.Routers.Store = Backbone.Router.extend({
     this.renderPanels();
 
     // Activate active panel
+    $('.content-panel').fadeOut(500);
     $('.content-panel').removeClass('active');
+    $('.account.content-panel').fadeIn(500);
     $('.account.content-panel').addClass('active');
 
     // Update department dropdown
@@ -68,7 +69,9 @@ Instamart.Routers.Store = Backbone.Router.extend({
     $('body').addClass('checking-out');
 
     // Update active panel
+    $('.content-panel').fadeOut(500);
     $('.content-panel').removeClass('active');
+    $('.delivery.content-panel').fadeIn(500);
     $('.delivery.content-panel').addClass('active');
   },
 
@@ -82,7 +85,9 @@ Instamart.Routers.Store = Backbone.Router.extend({
     $('body').addClass('checking-out');
 
     // Update active panel
+    $('.content-panel').fadeOut(500);
     $('.content-panel').removeClass('active');
+    $('.payment.content-panel').fadeIn(500);
     $('.payment.content-panel').addClass('active');
   },
 
@@ -96,7 +101,9 @@ Instamart.Routers.Store = Backbone.Router.extend({
     $('body').addClass('checking-out');
 
     // Update active panel
+    $('.content-panel').fadeOut(500);
     $('.content-panel').removeClass('active');
+    $('.replacements.content-panel').fadeIn(500);
     $('.replacements.content-panel').addClass('active');
   },
 
@@ -109,7 +116,9 @@ Instamart.Routers.Store = Backbone.Router.extend({
     $('body').removeClass('checking-out');
 
     // Update active panel
+    $('.content-panel').fadeOut(500);
     $('.content-panel').removeClass('active');
+    $('.faq.content-panel').fadeIn(500);
     $('.faq.content-panel').addClass('active');
   },
 
@@ -119,7 +128,9 @@ Instamart.Routers.Store = Backbone.Router.extend({
     this.renderPanels();
 
     // Update active panel
+    $('.content-panel').fadeOut(500);
     $('.content-panel').removeClass('active');
+    $('.lists.content-panel').fadeIn(500);
     $('.lists.content-panel').addClass('active');
 
     // Update department dropdown
@@ -137,7 +148,9 @@ Instamart.Routers.Store = Backbone.Router.extend({
     this.renderPanels();
 
     // Update active panel
+    $('.content-panel').fadeOut(500);
     $('.content-panel').removeClass('active');
+    $('.favorites.content-panel').fadeIn(500);
     $('.favorites.content-panel').addClass('active');
 
     // Update department dropdown
@@ -155,7 +168,9 @@ Instamart.Routers.Store = Backbone.Router.extend({
     this.renderPanels();
 
     // Activate active panel
+    $('.content-panel').fadeOut(500);
     $('.content-panel').removeClass('active');
+    $('.new-subscription.content-panel').fadeIn(500);
     $('.new-subscription.content-panel').addClass('active');
     $('body').addClass('landing-page express-landing-page');
 
@@ -226,6 +241,9 @@ Instamart.Routers.Store = Backbone.Router.extend({
 
   // Main content
   storeShow: function () {
+    // If coming from express page
+    $('body').removeClass('landing-page express-landing-page');
+
     // Require signed in
     if (!Instamart.sessionRouter._requireSignedIn()) { return; }
 
@@ -255,8 +273,11 @@ Instamart.Routers.Store = Backbone.Router.extend({
     $('a.nav-tab.popular').addClass('active-nav');
 
     // Activate panel
+    $('.content-panel').fadeOut(500);
     $('.content-panel').removeClass('active');
+    $('.popular.content-panel').fadeIn(500);
     $('.popular.content-panel').addClass('active');
+    $('.department.content-panel').fadeIn(500);
     $('.department.content-panel').addClass('active');
   },
 
@@ -282,7 +303,9 @@ Instamart.Routers.Store = Backbone.Router.extend({
     $('*[data-department-id="' + dept.id + '"]').addClass('active');
 
     // Activate panel
+    $('.content-panel').fadeOut(500);
     $('.content-panel').removeClass('active');
+    $('.department.content-panel').fadeIn(500);
     $('.department.content-panel').addClass('active');
   },
 
