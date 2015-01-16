@@ -10,6 +10,10 @@ Instamart.Views.PrimaryNav = Marionette.ItemView.extend({
     'mouseout .dropdown.my-instacart': 'closeUserDropdown'
   },
 
+  searchBar: function () {
+    $('#store-search').hideseek({ highlight: true });
+  },
+
   showUserDropdown: function () {
     $('.dropdown-menu').css({ 'display': 'block' });
   },
@@ -19,10 +23,12 @@ Instamart.Views.PrimaryNav = Marionette.ItemView.extend({
   },
 
   toggleStoreDropdown: function () {
+    $('#department-dropdown').removeClass('ic-in');
     $('#warehouse-dropdown').toggleClass('ic-in');
   },
 
   toggleDepartmentDropdown: function () {
+    $('#warehouse-dropdown').removeClass('ic-in');
     $('#department-dropdown').toggleClass('ic-in');
   },
 

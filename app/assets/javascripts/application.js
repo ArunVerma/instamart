@@ -13,6 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.serializejson
+//= require bloodhound.min
+//= require typeahead.bundle.min
+//= require typeahead.jquery.min
 //= require underscore
 //= require backbone
 //= require backbone.marionette

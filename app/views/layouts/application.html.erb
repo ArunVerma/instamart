@@ -11,39 +11,7 @@
       <%= javascript_include_tag 'application' %>
       <%= csrf_meta_tags %>
     </head>
-  <body class="index mac chrome" id="store">
-
-    <% if signed_in? %>
-      <link href="https://d1s8987jlndkbs.cloudfront.net/assets/application-98e12c4adc3c5201af031b4a66e3bb2a.css" media="all" rel="stylesheet" />
-      <link href="https://d1s8987jlndkbs.cloudfront.net/assets/store-f276b9d9736e74710a7eb866917cc192.css" media="screen" rel="stylesheet" />
-    <% end %>
-
-    <div class="navbar primary-navbar ic-collapsible-nav"></div>
-    <div class="ic-nav-large-dropdown ic-appear" id="department-dropdown"></div>
-    <div class="ic-nav-large-dropdown ic-appear" id="warehouse-dropdown"></div>
-    <div class="navbar secondary-navbar hide-on-checkout"></div>
-    <div class="container-fluid"></div>
-    <div class="outside-container">
-      <div class="container-fluid cart-minimized">
-        <div class="row-fluid">
-          <div class="span12 panel-manager" id="main-content">
-            <div class="popular content-panel"></div>
-            <div class="department content-panel">
-              <div class="items-board-container"></div>
-            </div>
-            <div class="aisle content-panel">
-              <div class="row-fluid">
-                <div class="span10"></div>
-              </div>
-            </div>
-          </div>
-          <div class="hide-on-checkout hide-on-landing minimized" id="cart-sidebar"></div>
-        </div>
-      </div>
-    </div>
-    <div class="item-detail-overlay hide" style="display: none;"></div>
-
-    <%= yield %>
-
-  </body>
+    <body class="index mac chrome" id="store">
+      <%= yield %>
+    </body>
 </html>

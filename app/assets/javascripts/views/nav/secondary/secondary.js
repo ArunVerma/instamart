@@ -9,6 +9,13 @@ Instamart.Views.SecondaryNav = Marionette.ItemView.extend({
     'click #cart-in-nav': 'toggleCartSidebar'
   },
 
+  initialize: function () {
+    this.cartSubtotal = Instamart.currentUser.cartSubtotal();
+    this.cartQty      = Instamart.currentUser.cartItems().length;
+    this.fee          = this.getFee();
+    this.reason       = this.getReason();
+  },
+
   toggleCartSidebar: function () {
     $('#cart-in-nav').toggleClass('minimized');
     $('#cart-sidebar').toggleClass('minimized');
@@ -24,9 +31,29 @@ Instamart.Views.SecondaryNav = Marionette.ItemView.extend({
     }
   },
 
+  getFee: function () {
+    if (this.cartSubtotal >= 35) {
+      return 3.99;
+    } else {
+      return 7.99;
+    }
+  },
+
+  getReason: function () {
+    if (this.cartSubtotal < 35) {
+      var diff = (35 - this.cartSubtotal).toFixed(2);
+      return "Add only $" + diff + " for $3.99 delivery!";
+    } else {
+      return "Only $3.99 for orders over $35.00!";
+    }
+  },
+
   templateHelpers: function () {
     return {
-      dept: this.model
+      dept   : this.model,
+      count  : this.cartQty,
+      fee    : this.fee,
+      reason : this.reason
     };
   }
 });

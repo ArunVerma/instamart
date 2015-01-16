@@ -18,7 +18,7 @@ Instamart.Views.DepartmentDropdown = Marionette.ItemView.extend({
   },
 
   changeStore: function () {
-    $('#warehouse-dropdown').addClass('ic-in');
     $('#department-dropdown').removeClass('ic-in');
+    $('#warehouse-dropdown').addClass('ic-in');
   }
 })

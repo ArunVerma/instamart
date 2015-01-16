@@ -28,14 +28,15 @@
     <% }; %>
   </ul>
 <div class="pull-right minimized" id="cart-in-nav">
-  <div class="nav-content"><i class="icon-chevron-right toggle-cart" title="Expand cart"></i>
+  <div class="nav-content">
+    <i class="icon-chevron-right toggle-cart" title="Expand cart"></i>
     <i class="icon-shopping-cart"></i>
-    <span class="items-count">4 items</span>
+    <span class="items-count"<%= count %> items</span>
     <div class="pull-right totals">
       <span class="delivery-icon-totals">
         <span class="truck-icon"></span>
         <span class="light truck-icon"></span>
-        <span class="delivery-total">$7.99</span>
+        <span class="delivery-total">$<% fee %></span>
       </span>
       <div class="btn-group">
         <button class="btn btn-checkout-mini btn-item-total btn-small items-total" style="overflow: hidden;"><span class="digit digit-0" style="position: relative;">$</span><span class="digit digit-1" style="position: relative; top: 0px;">2</span><span class="digit digit-2" style="position: relative; top: 0px;">9</span><span class="digit digit-3" style="position: relative;">.</span><span class="digit digit-4" style="position: relative; top: 0px;">4</span><span class="digit digit-5" style="position: relative;">6</span></button>
@@ -51,7 +52,7 @@
           </table>
         </div>
         <div class="warehouse-cart-header"><div class="centered main-warehouse-header">
-          <span class="reason">Add only $5.54 for $3.99 delivery!</span>
+          <span class="reason"><%= reason %></span>
         </div></div>
       </div></div>
     </div>

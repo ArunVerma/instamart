@@ -1,16 +1,20 @@
 Instamart.Routers.Store = Backbone.Router.extend({
   routes: {
     '': 'root',
-    'whole-foods': 'root',
     'stores/:id': 'storeShow',
     'stores/:store_id/departments/:id': 'departmentShow',
     'stores/:store_id/departments/:dept_id/aisles/:id': 'aisleShow'
   },
 
   root: function () {
+    // If not signed in, go to landing page
     if (!Instamart.currentUser.isSignedIn()) {
       Backbone.history.navigate("landing", { trigger: true });
+    // Else, go to home index
     } else {
+      var indexView = new Instamart.Views.Index;
+      indexView.setElement($('body')).render();
+      this.assignRegions();
       this.storeShow(1);
     }
   },
@@ -37,8 +41,27 @@ Instamart.Routers.Store = Backbone.Router.extend({
     Instamart.cartSidebar.show(cartSidebarView);
   },
 
+  assignRegions: function () {
+    Instamart.addRegions({
+      primaryNav:         ".navbar.primary-navbar.ic-collapsible-nav",
+      secondaryNav:       ".navbar.secondary-navbar.hide-on-checkout",
+      popularPanel:       ".popular.content-panel",
+      departmentDropdown: "#department-dropdown",
+      storeDropdown:      "#warehouse-dropdown",
+      itemsBoard:         ".items-board-container",
+      aislePanel:         ".span10",
+      cartSidebar:        "#cart-sidebar"
+    });
+  },
+
   // Main content
   storeShow: function (id) {
+    // Require signed in
+    if (!Instamart.currentUser.isSignedIn()) {
+      Backbone.history.navigate("landing", { trigger: true });
+      return;
+    }
+
     // Items board
     var depts = Instamart.stores.getOrFetch(id).depts();
     var itemsBoard = new Instamart.Views.ItemsBoard({ collection: depts });
@@ -57,6 +80,12 @@ Instamart.Routers.Store = Backbone.Router.extend({
   },
 
   departmentShow: function (store_id, id) {
+    // Require signed in
+    if (!Instamart.currentUser.isSignedIn()) {
+      Backbone.history.navigate("landing", { trigger: true });
+      return;
+    }
+
     // Items board
     var dept = Instamart.departments.getOrFetch(id);
     var aisles = dept.aisles();
@@ -72,6 +101,12 @@ Instamart.Routers.Store = Backbone.Router.extend({
   },
 
   aisleShow: function (store_id, dept_id, id) {
+    // Require signed in
+    if (!Instamart.currentUser.isSignedIn()) {
+      Backbone.history.navigate("landing", { trigger: true });
+      return;
+    }
+
     // Items board
     var aisle = Instamart.aisles.getOrFetch(id);
     var dept = Instamart.departments.getOrFetch(dept_id);

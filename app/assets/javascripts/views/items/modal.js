@@ -10,12 +10,20 @@ Instamart.Views.ItemModal = Marionette.ItemView.extend({
 
   initialize: function () {
     $('.item-detail-overlay').click(this.dismiss);
+    this.qty_in_cart = Instamart.currentUser.qtyInCart(this.model.id);
+    this.display_price = parseFloat(this.model.get('price')).toFixed(2);
   },
 
   dismiss: function (event) {
     event.preventDefault();
     $('.item-detail-overlay').css({ 'display': 'none' });
-    if ($('.item-detail.hide').length > 0) $('.item-detail.hide').remove();
-    this.remove();
+    $('.item-detail.hide').css({ 'display': 'none' });
+  },
+
+  templateHelpers: function () {
+    return {
+      qty_in_cart: this.qty_in_cart,
+      price: this.display_price
+    }
   }
 });

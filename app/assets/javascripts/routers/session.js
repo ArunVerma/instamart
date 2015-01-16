@@ -44,7 +44,7 @@ Instamart.Routers.Session = Backbone.Router.extend({
 
     Instamart.currentUser.signOut({
       success: function () {
-        Backbone.history.navigate("", true);
+        Backbone.history.navigate("", {trigger:true});
       }
     });
   },

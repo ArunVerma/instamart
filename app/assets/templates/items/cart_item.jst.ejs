@@ -1,0 +1,35 @@
+<td class="qty">
+  <a class="change-qty qty-inc" href="#" title="">
+    <i class="icon-caret-up"></i>
+  </a>
+  <div><%= qty %></div>
+  <a class="change-qty qty-dec qty-disabled" href="#">
+    <i class="icon-caret-down"></i>
+  </a>
+</td>
+<td class="image item-clickable">
+  <img src="<%= img_url %>">
+</td>
+<td class="name">
+  <span class="item-clickable"><%= name %></span>
+  <br>
+  <span class="item-size"><%= size %></span>
+  <span>
+    <a class="add-note pull-right" href="#">
+      <i class="icon-pencil"></i>
+      add note
+    </a>
+    <div class="edit-special-instructions hide">
+      <textarea class="special-instructions-box" rows="3" cols="2"></textarea>
+      <br>
+      <button class="btn btn-mini btn-primary btn-save-note">Save</button>
+      <button class="btn btn-cancel-note btn-mini">Cancel</button>
+    </div>
+  </span>
+</td>
+<td class="price">
+  $<%= price %>
+</td>
+<td class="remove-cell">
+  <a class="remove-item" href="#">×</a>
+</td>
