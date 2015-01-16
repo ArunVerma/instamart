@@ -4,14 +4,10 @@ Instamart.Views.CartSidebar = Marionette.ItemView.extend({
   tagName: 'section',
 
   initialize: function () {
-    this.listenTo(Instamart.cartItems, 'sync change add remove refresh', this.updateQty);
-    this._items = Instamart.currentUser.cartItems();
+    this.listenTo(this.collection, "add remove sync change", this.render);
+    this._items    = Instamart.currentUser.cartItems();
+    this._count    = Instamart.currentUser.numCartItems();
     this._subtotal = Instamart.currentUser.cartSubtotal();
-  },
-
-  updateQty: function () {
-    this.qty_in_cart = Instamart.currentUser.qtyInCart(this.model.get('item_id'));
-    this.render();
   },
 
   onRender: function () {
@@ -25,7 +21,7 @@ Instamart.Views.CartSidebar = Marionette.ItemView.extend({
   templateHelpers: function () {
     return {
       subtotal : this._subtotal,
-      count    : this._items.length
+      count    : this._count
     }
   }
 })

@@ -1,3 +1,4 @@
+<div class="headline">
   <button class="close">×</button>
   <h2 class="muted">
     Whole Foods Market
@@ -6,30 +7,29 @@
 </div>
 <div class="departments">
   <div class="department-list featured-departments">
-    <a class="department active" href="whole-foods/departments/popular" data-department-id="popular">
+    <a class="department popular nav-tab" href="#whole-foods" data-department-id="popular">
       <span class="department-icon">
         <i class="icon-bookmark"></i>
       </span>
       Popular
     </a>
-    <a class="department" href="whole-foods/lists" data-department-id="lists">
+    <a class="department lists nav-tab" href="#whole-foods/lists" data-department-id="lists">
       <span class="department-icon">
         <i class="icon-list"></i>
       </span>
       Lists &amp; Recipes
     </a>
-    <a class="department" href="whole-foods/departments/favorites" data-department-id="favorites">
+    <a class="department favorites nav-tab" href="#whole-foods/favorites" data-department-id="favorites">
       <span class="department-icon">
         <i class="icon-star"></i>
       </span>
       Favorites
     </a>
   </div>
-  <!-- department icons licensed under CC BY 3.0 from flaticon.com c/o freeipk: http://www.flaticon.com/categories/food/2 -->
   <div class="department-list in-columns">
-    <% Instamart.departments.each(function (department) { %>
+    <% departments.each(function (department) { %>
 
-    <a class="department" href="#stores/1/departments/<%= department.id %>" data-department-id="<%= department.id %>">
+    <a class="department" href="#whole-foods/departments/<%= department.id %>" data-department-id="<%= department.id %>">
       <%= department.escape('name') %>
     </a>
 

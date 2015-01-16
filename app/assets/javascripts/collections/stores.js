@@ -11,7 +11,7 @@ Instamart.Collections.Stores = Backbone.Collection.extend({
     var store = this.get(id);
 
     if (!store) {
-      store = new Instamart.Models.Store({ id: id });
+      store = new Instamart.Models.Store({id : id});
       store.fetch({
         success: function () {
           this.add(store);

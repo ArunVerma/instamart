@@ -1,0 +1,145 @@
+<div class="row">
+  <div class="checkout-header span12">
+    <div class="centered">
+      <h1 class="float-left">
+        <span class="checkout-state whitelabel-logo"></span>
+        <span class="checkout-state">Delivery</span>
+        <span class="muted next">
+          <i class="icon-chevron-right"></i>
+        </span>
+        <span class="checkout-state selected">Payment</span>
+        <span class="muted next">
+          <i class="icon-chevron-right"></i>
+        </span>
+        <span class="checkout-state">Replacements</span>
+      </h1>
+    </div>
+  </div>
+</div>
+<div class="checkout-flow-wrapper checkout-wrapper payment">
+  <form class="form-horizontal">
+    <fieldset>
+      <div class="control-group">
+        <label class="control-label credit-cards-control-label" for="credit_card_id">Credit Card</label>
+        <div class="controls">
+          <ul class="credit-cards inline unstyled">
+            <li class="credit-card selected Visa" data-credit-card-id="66981">
+              <span class="last-four">3141</span>
+              <i class="icon-check"></i>
+              <div class="centered credit-card-label">
+                Visa
+              </div>
+            </li>
+            <li class="add-credit-card">
+              <i class="icon-plus"></i>
+              <div class="centered credit-card-label">New card</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">Subtotal</label>
+        <div class="controls">
+          <div class="order-total">
+            <span class="order-total-value">
+              $<%= subtotal %>
+            </span>
+            <a class="instacart-express" href="#express" data-source="checkout" style="margin-left: 20px;">Get Unlimited Free Deliveries. Try out Instacart Express Free!</a>
+          </div>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">Delivery</label>
+        <div class="controls">
+          <div class="order-total order-total-value">
+            $<%= fees %>
+          </div>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">Coupons</label>
+        <div class="controls">
+          <a class="btn btn enter-coupon-code">Have a coupon code?</a>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label tip-control-label">
+          Tip
+          <br>
+          <em class="muted" style="font-size: smaller">optional</em>
+        </label>
+        <div class="controls">
+          <btn class="btn btn-large btn-success btn-tip btn-tip-after" data-tip-amount="0" data-after="true">
+            Tip later
+          </btn>
+          <btn class="btn btn-large btn-subtle btn-tip" data-tip-amount="2.85">
+            5%
+            <small>$2.85</small>
+          </btn>
+          <btn class="btn btn-large btn-subtle btn-tip" data-tip-amount="5.70">
+            10%
+            <small>$5.70</small>
+          </btn>
+          <btn class="btn btn-large btn-subtle btn-tip" data-tip-amount="8.54">
+            15%
+            <small>$8.54</small>
+          </btn>
+          <btn class="btn btn-large btn-subtle btn-tip-other" data-tip-amount="other">
+            Other
+          </btn>
+          <small class="help-inline muted shopper-thankyou">
+            A great way to say thank you to your amazing shopper!
+          </small>
+        </div>
+      </div>
+      <div class="control-group" style="margin-bottom: 0">
+        <label class="control-label">Total</label>
+        <div class="controls">
+          <div class="order-total order-total-value" id="checkout-final-total">
+            $<%= total %>
+          </div>
+          <small class="authorization-note help muted">
+            <span>Your card may be temporarily authorized for more than your final order total.</span>
+          </small>
+        </div>
+      </div>
+    </fieldset>
+    <div class="buttons clearfix">
+      <div class="pull-left">
+        <a class="btn btn-back btn-large btn-subtle" href="#checkout">
+          <i class="icon-chevron-left"></i>
+          Back
+        </a>
+      </div>
+      <div class="pull-right">
+        <button class="btn btn-large btn-next btn-primary" data-loading-text="Validating...">
+          Next
+          <i class="icon-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+  </form>
+  <div class="fade hide modal" id="other-tip-modal">
+    <div class="modal-header">
+      <button class="close" type="button" data-dismiss="modal">×</button>
+      <h3>
+        <i class="icon-smile"></i>
+        Other Tip Amount
+      </h3>
+    </div>
+    <div class="modal-body">
+      <div class="form-horizontal">
+        <div class="control-group">
+          <label class="control-label">Tip Amount</label>
+          <div class="controls">
+            <input class="span1" id="initial_tip_input" type="text" name="initial_tip" value="" placeholder="$11.39">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-subtle" data-dismiss="modal">Cancel</button>
+      <input class="btn btn-add-tip btn-primary" type="cancel" value="Add Tip" data-dismiss="modal">
+    </div>
+  </div>
+</div>

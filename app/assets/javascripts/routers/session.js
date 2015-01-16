@@ -5,15 +5,15 @@ Instamart.Routers.Session = Backbone.Router.extend({
   },
 
   routes: {
-    "landing": "landing",
-    "signup": "signUp",
-    "login": "signIn",
-    "logout": "signOut"
+    "landing" : "landing",
+    "signup"  : "signUp",
+    "login"   : "signIn",
+    "logout"  : "signOut"
   },
 
   landing: function(){
     if (Instamart.currentUser.isSignedIn()) {
-      Backbone.history.navigate("");
+      Backbone.history.navigate("whole-foods");
       return;
     }
 
@@ -83,7 +83,7 @@ Instamart.Routers.Session = Backbone.Router.extend({
   },
 
   _goHome: function(){
-    Backbone.history.navigate("", { trigger: true });
+    Backbone.history.navigate("", {trigger : true});
   },
 
   _swapView: function (view) {

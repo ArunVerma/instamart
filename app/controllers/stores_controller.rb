@@ -7,8 +7,8 @@ class StoresController < ApplicationController
     @stores = Store.all
   end
 
-  # GET /stores/1
-  # GET /stores/1.json
+  # GET /whole-foods
+  # GET /whole-foods.json
   def show
   end
 
@@ -17,7 +17,7 @@ class StoresController < ApplicationController
     @store = Store.new
   end
 
-  # GET /stores/1/edit
+  # GET /whole-foods/edit
   def edit
   end
 
@@ -37,8 +37,8 @@ class StoresController < ApplicationController
     end
   end
 
-  # PATCH/PUT /stores/1
-  # PATCH/PUT /stores/1.json
+  # PATCH/PUT /whole-foods
+  # PATCH/PUT /whole-foods.json
   def update
     respond_to do |format|
       if @store.update(store_params)
@@ -51,8 +51,8 @@ class StoresController < ApplicationController
     end
   end
 
-  # DELETE /stores/1
-  # DELETE /stores/1.json
+  # DELETE /whole-foods
+  # DELETE /whole-foods.json
   def destroy
     @store.destroy
     respond_to do |format|

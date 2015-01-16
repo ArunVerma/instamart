@@ -1,20 +1,20 @@
 <div class="navbar-inner" id="sub-nav-wrapper">
   <ul class="nav nav-normal" id="sub-nav">
-    <% if (name === "Popular") { %>
+    <% if (name === "Popular" || name == "Lists & Recipes" || name == "Favorites") { %>
       <li class="featured subnav-item" data-department-id="popular">
-        <a class="active-nav" href="#zones/1/stores/1">
+        <a class="nav-tab popular" href="#whole-foods">
           <i class="icon-bookmark"></i>
           Popular
         </a>
       </li>
       <li class="featured subnav-item" data-department-id="lists">
-        <a href="whole-foods/lists">
+        <a class="nav-tab lists" href="#whole-foods/lists">
           <i class="icon-list"></i>
           Lists &amp; Recipes
         </a>
       </li>
       <li class="featured subnav-item" data-department-id="favorites">
-        <a href="whole-foods/departments/favorites">
+        <a class="nav-tab favorites" href="#whole-foods/favorites">
           <i class="icon-star"></i>
           Favorites
         </a>
@@ -22,7 +22,7 @@
     <% } else { %>
       <% dept.aisles().each(function (aisle) { %>
         <li class="subnav-item" data-aisle-id="<%= aisle.id %>">
-          <a href="#stores/1/departments/<%= dept.id %>/aisles/<%= aisle.id %>"><%= aisle.escape('name') %></a>
+          <a href="#whole-foods/departments/<%= dept.id %>/aisles/<%= aisle.id %>"><%= aisle.escape('name') %></a>
         </li>
       <% }); %>
     <% }; %>
@@ -31,15 +31,17 @@
   <div class="nav-content">
     <i class="icon-chevron-right toggle-cart" title="Expand cart"></i>
     <i class="icon-shopping-cart"></i>
-    <span class="items-count"<%= count %> items</span>
+    <span class="items-count"><%= count %> items</span>
     <div class="pull-right totals">
       <span class="delivery-icon-totals">
         <span class="truck-icon"></span>
         <span class="light truck-icon"></span>
-        <span class="delivery-total">$<% fee %></span>
+        <span class="delivery-total">$<%= fee %></span>
       </span>
       <div class="btn-group">
-        <button class="btn btn-checkout-mini btn-item-total btn-small items-total" style="overflow: hidden;"><span class="digit digit-0" style="position: relative;">$</span><span class="digit digit-1" style="position: relative; top: 0px;">2</span><span class="digit digit-2" style="position: relative; top: 0px;">9</span><span class="digit digit-3" style="position: relative;">.</span><span class="digit digit-4" style="position: relative; top: 0px;">4</span><span class="digit digit-5" style="position: relative;">6</span></button>
+        <button class="btn btn-checkout-mini btn-item-total btn-small items-total" style="overflow: hidden;">
+          <%= "$" + subtotal %>
+        </button>
         <button class="btn btn-checkout-label btn-checkout-mini btn-small">Checkout</button>
       </div>
     </div></div>

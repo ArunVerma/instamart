@@ -15,11 +15,11 @@ Instamart.Views.PrimaryNav = Marionette.ItemView.extend({
   },
 
   showUserDropdown: function () {
-    $('.dropdown-menu').css({ 'display': 'block' });
+    $('.dropdown-menu.user').css({ 'display': 'block' });
   },
 
   closeUserDropdown: function () {
-    $('.dropdown-menu').css({ 'display': 'none' });
+    $('.dropdown-menu.user').css({ 'display': 'none' });
   },
 
   toggleStoreDropdown: function () {

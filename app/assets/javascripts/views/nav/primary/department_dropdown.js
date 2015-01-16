@@ -9,6 +9,14 @@ Instamart.Views.DepartmentDropdown = Marionette.ItemView.extend({
     'click a.department': 'close'
   },
 
+  initialize: function () {
+    if (Instamart.departments.length === 0) {
+      Instamart.departments.fetch({ async: true });
+    }
+    
+    this.departments = Instamart.departments;
+  },
+
   open: function () {
     $('#department-dropdown').addClass('ic-in');
   },
@@ -20,5 +28,11 @@ Instamart.Views.DepartmentDropdown = Marionette.ItemView.extend({
   changeStore: function () {
     $('#department-dropdown').removeClass('ic-in');
     $('#warehouse-dropdown').addClass('ic-in');
+  },
+
+  templateHelpers: function () {
+    return {
+      departments : Instamart.departments
+    }
   }
 })
