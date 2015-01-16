@@ -227,7 +227,7 @@ Instamart.Routers.Store = Backbone.Router.extend({
 
     // If coming from checkout
     $('body').removeClass('checking-out');
-
+    
     // Items board
     var depts = Instamart.stores.getOrFetch(1).depts();
     var itemsBoard = new Instamart.Views.ItemsBoard({collection : depts});
