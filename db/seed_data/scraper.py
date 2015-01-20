@@ -6,7 +6,7 @@ import time
 from bs4 import BeautifulSoup
 
 dat = read_csv('scraper.csv', index_col=0)
-credentials = {'email':'tradecraft9@gmail.com', 'password':'asdf1234'}
+credentials = {'email':'', 'password':''}
 login_resp = sesh.post('https://www.instacart.com/accounts/login', data=credentials)
 
 sesh = requests.Session()
