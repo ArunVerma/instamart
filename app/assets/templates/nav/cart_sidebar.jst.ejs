@@ -1,15 +1,5 @@
 <div class="cart-overlay ic-animated-appear"></div>
-<div class="cart-wrapper" style="height: 667px;">
-  <div class="warehouse-cart" id="warehouse-other-items-cart" style="display: none;">
-    <div class="warehouse-cart-header">
-      <strong class="name">Other Items</strong>
-    </div>
-    <div class="cart-items">
-      <table class="table">
-        <tbody></tbody>
-      </table>
-    </div>
-  </div>
+<div class="cart-wrapper" style="height: <%= height %>px">
   <div class="warehouse-cart" id="warehouse-3-cart">
     <div class="warehouse-cart-header">
       <div class="main-warehouse-header">
@@ -19,7 +9,7 @@
           <span class="price-well">$<%= subtotal %></span>
         </span>
       </div>
-  <div class="delivery-fees sub-warehouse-header sub-warehouse-header-dark" style="display: block;"><span>Next Delivery: Today, Jan 16, Within 2 hours</span></div>
+  <div class="delivery-fees sub-warehouse-header sub-warehouse-header-dark" style="display: block;"><span>Next Delivery: Today, Within 2 hours</span></div>
     <div class="sub-warehouse-header">
       <span class="reason"><%= reason %></span>
     </div>
@@ -33,7 +23,6 @@
   </div>
 </div>
 <div class="cart-options">
-  <div class="cart-bottom"><div class="cart-bottom-left delivery-times"><a href="#delivery_times" class="centered"><span class="instacart-icon instacart-icon-delivery-times"></span>Delivery Times</a></div><div class="cart-bottom-right shop-with-friends"><span class="centered"><a href="#shop_with_friends"><i class="fa fa-group"></i> Shop with friends</a></span></div></div>
   <div class="cart-checkout">
     <a class="btn-hollow btn-orange btn-merge btn-block hide" href="#">
       Add to order in progress

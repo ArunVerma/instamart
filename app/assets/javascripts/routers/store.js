@@ -1,6 +1,5 @@
 Instamart.Routers.Store = Backbone.Router.extend({
   routes: {
-    '404'                                         : 'oops',
     ''                                            : 'home',
     'help'                                        : 'help',
     'account'                                     : 'account',
@@ -19,11 +18,6 @@ Instamart.Routers.Store = Backbone.Router.extend({
     $('body').removeClass('landing-page express-landing-page');
   },
 
-  oops: function () {
-    var view = new Instamart.Views.Oops;
-    $('body').html(view.render().el.hide().fadeIn(500));
-  },
-
   home: function () {
     Instamart.currentUser.fetch({async : false});
 
@@ -32,7 +26,7 @@ Instamart.Routers.Store = Backbone.Router.extend({
 
     // If not signed in
     if (!Instamart.currentUser.isSignedIn()) {
-      Backbone.history.navigate('landing', {trigger : true});
+      Backbone.history.navigate('login', {trigger : true});
 
     // If signed in
     } else {
@@ -46,10 +40,12 @@ Instamart.Routers.Store = Backbone.Router.extend({
     this.renderPanels();
 
     // Activate active panel
-    $('.content-panel').fadeOut(500);
-    $('.content-panel').removeClass('active');
-    $('.account.content-panel').fadeIn(500);
-    $('.account.content-panel').addClass('active');
+    $('.content-panel').fadeOut(500, function () {
+      $('.content-panel').removeClass('active');
+    });
+    $('.account.content-panel').fadeIn(500, function () {
+      $('.account.content-panel').addClass('active');
+    });
 
     // Update department dropdown
     $('a.department.nav-tab').removeClass('active');
@@ -69,10 +65,12 @@ Instamart.Routers.Store = Backbone.Router.extend({
     $('body').addClass('checking-out');
 
     // Update active panel
-    $('.content-panel').fadeOut(500);
-    $('.content-panel').removeClass('active');
-    $('.delivery.content-panel').fadeIn(500);
-    $('.delivery.content-panel').addClass('active');
+    $('.content-panel').fadeOut(500, function () {
+      $('.content-panel').removeClass('active');
+    });
+    $('.delivery.content-panel').fadeIn(500, function () {
+      $('.delivery.content-panel').addClass('active');
+    });
   },
 
   payment: function () {
@@ -85,10 +83,12 @@ Instamart.Routers.Store = Backbone.Router.extend({
     $('body').addClass('checking-out');
 
     // Update active panel
-    $('.content-panel').fadeOut(500);
-    $('.content-panel').removeClass('active');
-    $('.payment.content-panel').fadeIn(500);
-    $('.payment.content-panel').addClass('active');
+    $('.content-panel').fadeOut(500, function () {
+      $('.content-panel').removeClass('active');
+    });
+    $('.payment.content-panel').fadeIn(500, function () {
+      $('.payment.content-panel').addClass('active');
+    });
   },
 
   replacements: function () {
@@ -101,10 +101,12 @@ Instamart.Routers.Store = Backbone.Router.extend({
     $('body').addClass('checking-out');
 
     // Update active panel
-    $('.content-panel').fadeOut(500);
-    $('.content-panel').removeClass('active');
-    $('.replacements.content-panel').fadeIn(500);
-    $('.replacements.content-panel').addClass('active');
+    $('.content-panel').fadeOut(500, function () {
+      $('.content-panel').removeClass('active');
+    });
+    $('.replacements.content-panel').fadeIn(500, function () {
+      $('.replacements.content-panel').addClass('active');
+    });
   },
 
   help: function () {
@@ -116,10 +118,12 @@ Instamart.Routers.Store = Backbone.Router.extend({
     $('body').removeClass('checking-out');
 
     // Update active panel
-    $('.content-panel').fadeOut(500);
-    $('.content-panel').removeClass('active');
-    $('.faq.content-panel').fadeIn(500);
-    $('.faq.content-panel').addClass('active');
+    $('.content-panel').fadeOut(500, function () {
+      $('.content-panel').removeClass('active');
+    });
+    $('.faq.content-panel').fadeIn(500, function () {
+      $('.faq.content-panel').addClass('active');
+    });
   },
 
   lists: function () {
@@ -128,10 +132,12 @@ Instamart.Routers.Store = Backbone.Router.extend({
     this.renderPanels();
 
     // Update active panel
-    $('.content-panel').fadeOut(500);
-    $('.content-panel').removeClass('active');
-    $('.lists.content-panel').fadeIn(500);
-    $('.lists.content-panel').addClass('active');
+    $('.content-panel').fadeOut(500, function () {
+      $('.content-panel').removeClass('active');
+    });
+    $('.lists.content-panel').fadeIn(500, function () {
+      $('.lists.content-panel').addClass('active');
+    });
 
     // Update department dropdown
     $('a.department.nav-tab').removeClass('active');
@@ -148,10 +154,12 @@ Instamart.Routers.Store = Backbone.Router.extend({
     this.renderPanels();
 
     // Update active panel
-    $('.content-panel').fadeOut(500);
-    $('.content-panel').removeClass('active');
-    $('.favorites.content-panel').fadeIn(500);
-    $('.favorites.content-panel').addClass('active');
+    $('.content-panel').fadeOut(500, function () {
+      $('.content-panel').removeClass('active');
+    });
+    $('.favorites.content-panel').fadeIn(500, function () {
+      $('.favorites.content-panel').addClass('active');
+    });
 
     // Update department dropdown
     $('a.department.nav-tab').removeClass('active');
@@ -168,10 +176,12 @@ Instamart.Routers.Store = Backbone.Router.extend({
     this.renderPanels();
 
     // Activate active panel
-    $('.content-panel').fadeOut(500);
-    $('.content-panel').removeClass('active');
-    $('.new-subscription.content-panel').fadeIn(500);
-    $('.new-subscription.content-panel').addClass('active');
+    $('.content-panel').fadeOut(500, function () {
+      $('.content-panel').removeClass('active');
+    });
+    $('.new-subscription.content-panel').fadeIn(500, function () {
+      $('.new-subscription.content-panel').addClass('active');
+    });
     $('body').addClass('landing-page express-landing-page');
 
     // Update department dropdown
@@ -273,12 +283,15 @@ Instamart.Routers.Store = Backbone.Router.extend({
     $('a.nav-tab.popular').addClass('active-nav');
 
     // Activate panel
-    $('.content-panel').fadeOut(500);
-    $('.content-panel').removeClass('active');
-    $('.popular.content-panel').fadeIn(500);
-    $('.popular.content-panel').addClass('active');
-    $('.department.content-panel').fadeIn(500);
-    $('.department.content-panel').addClass('active');
+    $('.content-panel').fadeOut(500, function () {
+      $('.content-panel').removeClass('active');
+    });
+    $('.popular.content-panel').fadeIn(500, function () {
+      $('.popular.content-panel').addClass('active');
+    });
+    $('.department.content-panel').fadeIn(500, function () {
+      $('.department.content-panel').addClass('active');
+    });
   },
 
   departmentShow: function (id) {
@@ -303,10 +316,12 @@ Instamart.Routers.Store = Backbone.Router.extend({
     $('*[data-department-id="' + dept.id + '"]').addClass('active');
 
     // Activate panel
-    $('.content-panel').fadeOut(500);
-    $('.content-panel').removeClass('active');
-    $('.department.content-panel').fadeIn(500);
-    $('.department.content-panel').addClass('active');
+    $('.content-panel').fadeOut(500, function () {
+      $('.content-panel').removeClass('active');
+    });
+    $('.department.content-panel').fadeIn(500, function () {
+      $('.department.content-panel').addClass('active');
+    });
   },
 
   aisleShow: function (store_id, dept_id, id) {
@@ -325,7 +340,6 @@ Instamart.Routers.Store = Backbone.Router.extend({
 
     // Facets sidebar
     var facets = new Instamart.Views.AisleFacets;
-    debugger;
     $('.aisle.row-fluid').prepend(facets.render().el);
     Instamart.aislePanel.show(itemsBoard);
     $('.aisle.content-panel').addClass('active');

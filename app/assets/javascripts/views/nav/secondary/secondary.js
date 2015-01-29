@@ -16,16 +16,15 @@ Instamart.Views.SecondaryNav = Marionette.ItemView.extend({
     this.reason       = this.getReason();
     this.count        = this.getCount();
 
-    this.listenTo(Instamart.cartItems, 'remove add change', this.updateCart);
+    this.listenTo(Instamart.cartItems, 'remove add change', this.render);
   },
 
-  updateCart: function () {
+  onBeforeRender: function () {
     this.cartSubtotal = Instamart.currentUser.cartSubtotal();
     this.cartQty      = Instamart.currentUser.cartItems().length;
     this.fee          = this.getFee();
     this.reason       = this.getReason();
     this.count        = this.getCount();
-    this.render();
   },
 
   toggleCartSidebar: function () {

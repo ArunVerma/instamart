@@ -28,15 +28,14 @@ Instamart.Views.CartItem = Marionette.ItemView.extend({
   },
 
   initialize: function () {
-    this.listenTo(Instamart.cartItems, 'remove add change', this.updateView);
+    this.listenTo(Instamart.cartItems, 'remove add change', this.render);
     this.item  = Instamart.items.findWhere({ id: this.model.get('item_id') });
     this.price = parseFloat(this.item.get('price')).toFixed(2);
   },
 
-  updateView: function () {
+  onBeforeRender: function () {
     this.item  = Instamart.items.findWhere({ id: this.model.get('item_id') });
     this.price = parseFloat(this.item.get('price')).toFixed(2);
-    this.render();
   },
 
   onRender: function () {

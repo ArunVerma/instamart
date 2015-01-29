@@ -10,7 +10,6 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
  *= require_self
  */
 
@@ -20,11 +19,4 @@
 
 .items-board-container .items-board .item {
   width: 209px;
-}
-
-#cover {
-  background: url("http://www.aveva.com/Images/ajax-loader.gif") no-repeat scroll center center #FFF;
-  position: absolute;
-  height: 100%;
-  width: 100%;
 }

@@ -1,21 +1,12 @@
 <html><head>
   <title>Instamart</title>
   <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700" rel="stylesheet" type="text/css">
-  <meta content="app-id=545599256, app-argument=fb407409359279969://popular" name="apple-itunes-app">
-  <!--[if lt IE 9]>
-  <script src="https://d1s8987jlndkbs.cloudfront.net/assets/html5shiv-ce85b7faaafb832c2e8b6d7699551fbc.js"></script>
-  <link href="https://d1s8987jlndkbs.cloudfront.net/assets/font-awesome-ie7-774c090c880b0da89088d12d4631cd3a.css" media="screen" rel="stylesheet" />
-  <![endif]-->
-  <!--[if lte IE 9]>
-  <link href="https://d1s8987jlndkbs.cloudfront.net/assets/ie8_fixes-1773a067d83b10297b3ad06fd37ae7f2.css" media="screen" rel="stylesheet" />
-  <![endif]-->
-  <meta content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport">
-  <link href="https://d1s8987jlndkbs.cloudfront.net/assets/favicon-7ede7037e669789bc8f6a9a597203f87.ico" rel="icon">
-  <link href="https://d1s8987jlndkbs.cloudfront.net/assets/landing_app/new-4b00c51ba05e002b6db0e21ffd97d088.css" media="screen" rel="stylesheet">
+  <link href="favicon.ico" rel="icon">
+  <link href="stylesheets/new.css" media="screen" rel="stylesheet">
 
   <div class="container">
     <header>
-      <a href="#" id="logo"><img alt="Logo header2 green@2x" class="instacart logo" src="https://d1s8987jlndkbs.cloudfront.net/assets/logo-header2-green@2x-eebcd83fdb759e06b5112464b0e9d463.png">
+      <a href="#" id="logo"><img alt="Logo header2 green@2x" class="instacart logo" src="logo-green-large.png">
       </a><a class="login btn btn-default btn-inverted" href="#login">
         Sign In
       </a>
@@ -27,97 +18,27 @@
           <h1>Welcome back.</h1>
           <p>Let's shop!</p>
         </div>
-        <form accept-charset="UTF-8" action="/session" class="new_user" id="login-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="z6gkIufLL4yf8pT52QkhaT7xklgluPeXYkfMV3xdpYw="></div><input id="login_user_remember_me" name="user[remember_me]" type="hidden" value="1">
-          <input id="login_user_source" name="user[source]" type="hidden" value="web">
-          <input class="user_mp_distinct_id" id="login_user_mp_distinct_id" name="user[mp_distinct_id]" type="hidden">
-          <div class="form-group"><input id="login_user_email" name="user[email]" placeholder="Email" style="margin-bottom: 4px;" type="email"></div>
-          <div class="form-group"><input id="user_password" name="user[password]" placeholder="Password" type="password"></div>
+        <form accept-charset="UTF-8" action="/session" class="new_user" id="login-form" method="post">
+          <div style="margin:0;padding:0;display:inline">
+          <div class="form-group">
+            <input id="login_user_email" name="user[email]" placeholder="Email" style="margin-bottom: 4px;" type="email">
+          </div>
+          <div class="form-group">
+            <input id="user_password" name="user[password]" placeholder="Password" type="password">
+          </div>
           <div class="form-group">
             <button class="login btn btn-warning btn-large" type="submit">Login</button>
           </div>
-          <div class="login-divider">
-            or
-          </div>
-          <div class="facebook-login">
-            <a class="facebook-connect btn btn-facebook btn-large" onclick="window.open('https://www.facebook.com/login.php?skip_api_login=1&api_key=407409359279969&signed_next=1&next=https%3A%2F%2Fwww.facebook.com%2Fv1.0%2Fdialog%2Foauth%3Fredirect_uri%3Dhttps%253A%252F%252Fwww.instacart.com%252Fauth%252Ffacebook%252Fcallback%26display%3Dpopup%26scope%3Demail%252Cuser_about_me%252Cuser_birthday%252Cuser_hometown%252Cuser_interests%252Cuser_likes%252Cuser_location%252Cfriends_location%26response_type%3Dcode%26client_id%3D407409359279969%26ret%3Dlogin&cancel_uri=https%3A%2F%2Fwww.instacart.com%2Fauth%2Ffacebook%2Fcallback%3Ferror%3Daccess_denied%26error_code%3D200%26error_description%3DPermissions%2Berror%26error_reason%3Duser_denied%23_%3D_&display=popup','name','width=600,height=400')" target="popup" href="https://www.facebook.com/login.php?skip_api_login=1&api_key=407409359279969&signed_next=1&next=https%3A%2F%2Fwww.facebook.com%2Fv1.0%2Fdialog%2Foauth%3Fredirect_uri%3Dhttps%253A%252F%252Fwww.instacart.com%252Fauth%252Ffacebook%252Fcallback%26display%3Dpopup%26scope%3Demail%252Cuser_about_me%252Cuser_birthday%252Cuser_hometown%252Cuser_interests%252Cuser_likes%252Cuser_location%252Cfriends_location%26response_type%3Dcode%26client_id%3D407409359279969%26ret%3Dlogin&cancel_uri=https%3A%2F%2Fwww.instacart.com%2Fauth%2Ffacebook%2Fcallback%3Ferror%3Daccess_denied%26error_code%3D200%26error_description%3DPermissions%2Berror%26error_reason%3Duser_denied%23_%3D_&display=popup">
-              <i class="icon-facebook-sign"></i>
-              &nbsp;
-              Login with Facebook
-            </a>
-          </div>
         </form>
-
-        <p>
-          Forgot your password?
-          <a class="forgot" href="#forgot">Reset it</a>
-        </p>
         <p>
           Don’t have an account?
           <a class="signup" href="#signup">Sign up</a>
         </p>
       </div>
-      <div class="step hide" id="forgot-step">
-        <div class="the-eye-catcher">
-          <h1>Forgot your password?</h1>
-          <p>We'll send you a link to reset your password.</p>
-        </div>
-        <form accept-charset="UTF-8" action="/accounts/password" class="new_user" id="forgot-password-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="z6gkIufLL4yf8pT52QkhaT7xklgluPeXYkfMV3xdpYw="></div><div class="form-group"><input id="forgot_password_user_email" name="user[email]" placeholder="Email" required="required" type="email"></div>
-          <div class="form-group">
-            <button class="btn btn-warning btn-large" type="submit">Reset Password</button>
-          </div>
-        </form>
-
-        <p>
-          Already have an account?
-          <a href="#login">Sign in</a>
-        </p>
-        <p>
-          Don’t have an account?
-          <a href="#signup">Sign up</a>
-        </p>
-      </div>
     </div>
     <div class="mac-preview reflexive-preview hide-on-mobile">
-      <img alt="Macbook pro@2x" src="https://d1s8987jlndkbs.cloudfront.net/assets/landing/macbook-pro@2x-76fd9451c86c19e3e70eab2563c01f60.png">
+      <img alt="Macbook pro@2x" src="macbook.png">
     </div>
-    <footer class="footer">
-      <ul class="nav nav-pills">
-        <li>
-          <a href="/faq">FAQ</a>
-        </li>
-        <li class="hide-on-mobile">
-          <a href="/jobs">Jobs</a>
-        </li>
-        <li class="hide-on-mobile">
-          <a href="http://news.instacart.com">Blog</a>
-        </li>
-        <li>
-          <a href="/contact">Contact</a>
-        </li>
-        <li class="hide-on-mobile">
-          <a href="/press">Press</a>
-        </li>
-        <li class="break-on-mobile">
-          <a href="/privacy">Privacy</a>
-        </li>
-        <li>
-          <a href="/terms">Terms</a>
-        </li>
-        <li class="hide-on-mobile">
-          <a href="/shoppers">Become a Shopper</a>
-        </li>
-        <li class="hide-on-mobile">
-          <a class="social" href="https://www.facebook.com/Instacart" target="_blank">
-            <i class="icon-facebook-sign"></i>
-          </a>
-        </li>
-        <li class="hide-on-mobile">
-          <a class="social" href="https://twitter.com/Instacart" target="_blank">
-            <i class="icon-twitter-sign"></i>
-          </a>
-        </li>
-      </ul>
-    </footer>
   </div>
 
 

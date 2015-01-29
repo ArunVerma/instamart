@@ -33,6 +33,9 @@ Instamart.Views.CartSidebar = Marionette.ItemView.extend({
     this._count    = this._items.length;
     this._subtotal = Instamart.currentUser.cartSubtotal();
     this._reason   = this.getReason();
+
+    // Set height to be proportional to browser window height
+    this._height = $(window).height() - 230;
   },
 
   onRender: function () {
@@ -43,13 +46,19 @@ Instamart.Views.CartSidebar = Marionette.ItemView.extend({
         this.$el.find('tbody.pri').append(view.render().el);
       }.bind(this))
     }
+
+    // Adjust height on window resize
+    $(window).resize(function () {
+      $('.cart-wrapper').css('height', $(window).height() - 230);
+    });
   },
 
   templateHelpers: function () {
     return {
       subtotal : this._subtotal,
       count    : this._count,
-      reason   : this._reason
+      reason   : this._reason,
+      height   : this._height
     }
   }
 })

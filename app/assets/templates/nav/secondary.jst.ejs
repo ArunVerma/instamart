@@ -1,31 +1,23 @@
 <div class="navbar-inner" id="sub-nav-wrapper">
   <ul class="nav nav-normal" id="sub-nav">
-    <% if (name == "Popular" || name == "Lists & Recipes" || name == "Favorites" || name == "Choose") { %>
-      <li class="featured subnav-item" data-department-id="popular">
-        <a class="nav-tab popular" href="#whole-foods">
-          <i class="icon-bookmark"></i>
-          Popular
-        </a>
-      </li>
-      <li class="featured subnav-item" data-department-id="lists">
-        <a class="nav-tab lists" href="#whole-foods/lists">
-          <i class="icon-list"></i>
-          Lists &amp; Recipes
-        </a>
-      </li>
-      <li class="featured subnav-item" data-department-id="favorites">
-        <a class="nav-tab favorites" href="#whole-foods/favorites">
-          <i class="icon-star"></i>
-          Favorites
-        </a>
-      </li>
-    <% } else { %>
-      <% dept.aisles().each(function (aisle) { %>
-        <li class="subnav-item" data-aisle-id="<%= aisle.id %>">
-          <a href="#whole-foods/departments/<%= dept.id %>/aisles/<%= aisle.id %>"><%= aisle.escape('name') %></a>
-        </li>
-      <% }); %>
-    <% }; %>
+    <li class="featured subnav-item" data-department-id="popular">
+      <a class="nav-tab popular" href="#whole-foods">
+        <i class="icon-bookmark"></i>
+        Popular
+      </a>
+    </li>
+    <li class="featured subnav-item" data-department-id="lists">
+      <a class="nav-tab lists" href="#whole-foods/lists">
+        <i class="icon-list"></i>
+        Lists &amp; Recipes
+      </a>
+    </li>
+    <li class="featured subnav-item" data-department-id="favorites">
+      <a class="nav-tab favorites" href="#whole-foods/favorites">
+        <i class="icon-star"></i>
+        Favorites
+      </a>
+    </li>
   </ul>
 <div class="pull-right minimized" id="cart-in-nav">
   <div class="nav-content">
