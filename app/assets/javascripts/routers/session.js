@@ -6,20 +6,20 @@ Instamart.Routers.Session = Backbone.Router.extend({
     "logout"  : "signOut"
   },
 
-  initialize: function(options){
-    this.$rootEl = options.$rootEl;
+  initialize: function (options) {
+    this.$rootEl = $('#panel');
     this.collection = new Instamart.Collections.Users();
     this.collection.fetch();
   },
 
-  landing: function(){
+  landing: function () {
     if (!this._requireSignedOut()) { return; }
 
     var view = new Instamart.Views.Landing;
     this._swapView(view);
   },
 
-  signUp: function(){
+  signUp: function () {
     if (!this._requireSignedOut()) { return; }
 
     var model    = new Instamart.users.model();
@@ -36,12 +36,14 @@ Instamart.Routers.Session = Backbone.Router.extend({
 
     Instamart.currentUser.signOut({
       success: function () {
-        Backbone.history.navigate("", {trigger : true});
+        var landingView = new Instamart.Views.LandingIndex;
+        landingView.setElement($('body')).render();
+        Backbone.history.navigate("", {trigger: true});
       }
     });
   },
 
-  signIn: function(callback){
+  signIn: function (callback) {
     if (!this._requireSignedOut(callback)) { return; }
 
     var signInView = new Instamart.Views.SignIn({
@@ -51,7 +53,7 @@ Instamart.Routers.Session = Backbone.Router.extend({
     this._swapView(signInView);
   },
 
-  _requireSignedIn: function(callback){
+  _requireSignedIn: function (callback) {
     if (!Instamart.currentUser.isSignedIn()) {
       callback = callback || this._goHome.bind(this);
       this.signIn(callback);
@@ -61,7 +63,7 @@ Instamart.Routers.Session = Backbone.Router.extend({
     return true;
   },
 
-  _requireSignedOut: function(callback){
+  _requireSignedOut: function (callback) {
     if (Instamart.currentUser.isSignedIn()) {
       callback = callback || this._goHome.bind(this);
       callback();
@@ -71,8 +73,8 @@ Instamart.Routers.Session = Backbone.Router.extend({
     return true;
   },
 
-  _goHome: function(){
-    Backbone.history.navigate("", {trigger : true});
+  _goHome: function () {
+    Backbone.history.navigate("", {trigger: true});
   },
 
   _swapView: function (view) {
@@ -81,11 +83,11 @@ Instamart.Routers.Session = Backbone.Router.extend({
       this.currentView.$el.fadeOut(500, function() {
         that.currentView.remove()
         that.currentView = view;
-        that.$rootEl.html(view.render().$el.hide().fadeIn(500))
+        $('#panel').html(view.render().$el.hide().fadeIn(500))
       })
     } else {
       that.currentView = view;
-      that.$rootEl.html(view.render().$el);
+      $('#panel').html(view.render().$el);
     }
   }
 

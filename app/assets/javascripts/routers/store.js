@@ -19,18 +19,18 @@ Instamart.Routers.Store = Backbone.Router.extend({
   },
 
   home: function () {
-    Instamart.currentUser.fetch({async : false});
+    Instamart.currentUser.fetch({async: false});
 
     // Require signed in
     // if (!Instamart.sessionRouter._requireSignedIn()) { return; }
 
     // If not signed in
     if (!Instamart.currentUser.isSignedIn()) {
-      Backbone.history.navigate('login', {trigger : true});
+      Backbone.history.navigate('login', {trigger: true});
 
     // If signed in
     } else {
-      Backbone.history.navigate('whole-foods', {trigger : true});
+      Backbone.history.navigate('whole-foods', {trigger: true});
     }
   },
 

@@ -8,6 +8,6 @@ Instamart.Views.Delivery = Marionette.ItemView.extend({
   },
 
   nextStep: function () {
-    Backbone.history.navigate("checkout/payment", {trigger : true});
+    Backbone.history.navigate("checkout/payment", {trigger: true});
   }
 })

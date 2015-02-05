@@ -20,15 +20,15 @@ Instamart.on("start", function () {
   Instamart.items       = new Instamart.Collections.Items([], {});
 
   // Sync
-  Instamart.currentUser.fetch( {async : false});
-  Instamart.users.fetch(       {async : false});
-  Instamart.carts.fetch(       {async : false});
-  Instamart.cartItems.fetch(   {async : false});
-  Instamart.zones.fetch(       {async : false});
-  Instamart.stores.fetch(      {async : false});
-  Instamart.departments.fetch( {async : false});
-  Instamart.aisles.fetch(      {async : false});
-  Instamart.items.fetch(       {async : false});
+  Instamart.currentUser.fetch( {async: false});
+  Instamart.users.fetch(       {async: false});
+  Instamart.carts.fetch(       {async: false});
+  Instamart.cartItems.fetch(   {async: false});
+  Instamart.zones.fetch(       {async: false});
+  Instamart.stores.fetch(      {async: false});
+  Instamart.departments.fetch( {async: false});
+  Instamart.aisles.fetch(      {async: false});
+  Instamart.items.fetch(       {async: false});
 
   // Add regions
   if (Instamart.currentUser.isSignedIn()) {
@@ -52,6 +52,9 @@ Instamart.on("start", function () {
       replacementsPanel  : ".replacements.content-panel",
       expressPanel       : ".new-subscription.content-panel"
     });
+  } else {
+    var landingView = new Instamart.Views.LandingIndex;
+    landingView.setElement($('body')).render();
   }
 
   // Routers
