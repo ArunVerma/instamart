@@ -44,6 +44,7 @@ gem 'font-awesome-rails'
 gem 'jquery-ui-rails'
 gem 'ejs'
 gem 'rails_12factor'
+gem 'unicorn-rails'
 
 group :development do
   gem 'annotate'
