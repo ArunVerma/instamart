@@ -45,6 +45,7 @@ gem 'jquery-ui-rails'
 gem 'ejs'
 gem 'rails_12factor'
 gem 'unicorn-rails'
+gem 'rack-timeout'
 
 group :development do
   gem 'annotate'
